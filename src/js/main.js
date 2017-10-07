@@ -33,55 +33,108 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
-	// Smoth scroll
-	$('a[href^="#section"]').click( function() {
-        var el = $(this).attr('href');
-        $('body, html').animate({
-            scrollTop: $(el).offset().top}, 1000);
-        return false;
-	});
+  ///////////
+  // FULLPAGE
+  ///////////
 
-  // HEADER SCROLL
-  // add .header-static for .page or body
-  // to disable sticky header
-  if ( $('.header-static').length == 0 ){
-    _window.scrolled(10, function() { // scrolled is a constructor for scroll delay listener
-      var vScroll = _window.scrollTop();
-      var header = $('.header').not('.header--static');
-      var headerHeight = header.height();
-      var heroHeight = $('.hero').outerHeight() - headerHeight;
+  $('[js-fullpage]').fullpage({
+    // options
+    // scrollOverflow: true,
+		// scrollOverflowReset: true,
+		// scrollOverflowOptions: null,
 
-      if ( vScroll > headerHeight ){
-        header.addClass('header--transformed');
+    normalScrollElements: '.content',
+
+    // callbacks
+    onLeave: function(index, nextIndex, direction){
+      // set classes for invisible elements
+      if ( nextIndex >= 2 ){
+        $('.header').addClass('is-half');
+        $('.navigation').addClass('is-visible')
       } else {
-        header.removeClass('header--transformed');
+        $('.header').removeClass('is-half');
+        $('.navigation').removeClass('is-visible')
       }
 
-      if ( vScroll > heroHeight ){
-        header.addClass('header--fixed');
+      // custom navigation
+      $('.section').each(function(i, section){
+        var sectionIndex = i + 1
+        if ( sectionIndex == nextIndex ){
+          var currentSection = $(section).data('section');
+
+          setHeaderNav(currentSection);
+          setNavProximity(currentSection);
+        }
+      });
+    }
+  });
+
+  function setHeaderNav(curSection){
+    $('.header__menu li').each(function(i,val){
+      if ( $(val).find('a').attr('href').substring(1) == curSection ){
+        $(val).addClass('is-active');
       } else {
-        header.removeClass('header--fixed');
+        $(val).removeClass('is-active')
       }
     });
   }
+
+  function setNavProximity(curSection){
+    $('.navigation__el').each(function(i, nav){
+      if ( $(nav).data('ask-for') == curSection ){
+
+        if ( $(nav).attr('data-proximity') == 1 ){
+          // nothing changed - already current
+        } else {
+          $(nav).attr('data-proximity', 1);
+          var curNavIndex = $(nav).index() + 1;
+          updateNavSiblings(curNavIndex);
+        }
+      }
+    });
+  }
+
+  function updateNavSiblings(curNavIndex){
+
+    $('.navigation__el').each(function(i, nav){
+      var navProximity = parseInt( $(nav).attr('data-proximity') );
+      var thisIndex = $(nav).index() + 1;
+
+      // console.log( $(nav).attr('data-ask-for'), "curNavIndex" + curNavIndex, "navProximity" + navProximity )
+      if ( curNavIndex > thisIndex){
+        $(nav).attr('data-proximity', navProximity + 1 );
+      }
+
+      // пока работает только вперед
+
+      // else if ( curNavIndex < thisIndex ) {
+      //   $(nav).attr('data-proximity', navProximity - 1 );
+      // }
+    });
+
+  }
+
+  // HEADER NAVIGATION
+  $('[js-header-navigation] a').each(function(i,nav){
+    var self = $(nav);
+
+    self.on('click', function(e){
+      var targetName = self.attr('href').substring(1);
+      var targetSection = $('.section[data-section='+targetName+']')
+
+      if (targetSection){
+        $.fn.fullpage.moveTo( targetSection.first().index() + 1 );
+        return false
+      }
+    });
+
+  });
 
   // HAMBURGER TOGGLER
   $('.hamburger').on('click', function(){
     $('.hamburger').toggleClass('active');
     $('.mobile-navi').toggleClass('active');
   });
-
-  // SET ACTIVE CLASS IN HEADER
-  // * could be removed in production and server side rendering
-  // user .active for li instead
-  $('.header__menu li').each(function(i,val){
-    if ( $(val).find('a').attr('href') == window.location.pathname.split('/').pop() ){
-      $(val).addClass('active');
-    } else {
-      $(val).removeClass('active')
-    }
-  });
-
 
   // VIDEO PLAY
   $('.promo-video .icon').on('click', function(){
@@ -157,86 +210,9 @@ $(document).ready(function(){
     }
   });
 
-  // $('.popup-gallery').magnificPopup({
-	// 	delegate: 'a',
-	// 	type: 'image',
-	// 	tLoading: 'Loading image #%curr%...',
-	// 	mainClass: 'mfp-img-mobile',
-	// 	gallery: {
-	// 		enabled: true,
-	// 		navigateByImgClick: true,
-	// 		preload: [0,1]
-	// 	},
-	// 	image: {
-	// 		tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
-	// 	}
-	// });
-
-
   ////////////
   // UI
   ////////////
-
-  // custom selects
-  $('.ui-select__visible').on('click', function(e){
-    var that = this
-    // hide parents
-    $(this).parent().parent().parent().find('.ui-select__visible').each(function(i,val){
-      if ( !$(val).is($(that)) ){
-        $(val).parent().removeClass('active')
-      }
-    });
-
-    $(this).parent().toggleClass('active');
-  });
-
-  $('.ui-select__dropdown span').on('click', function(){
-    // parse value and toggle active
-    var value = $(this).data('val');
-    if (value){
-      $(this).siblings().removeClass('active');
-      $(this).addClass('active');
-
-      // set visible
-      $(this).closest('.ui-select').removeClass('active');
-      $(this).closest('.ui-select').find('input').val(value);
-
-      $(this).closest('.ui-select').find('.ui-select__visible span').text(value);
-    }
-
-  });
-
-  // handle outside click
-  $(document).click(function (e) {
-    var container = new Array();
-    container.push($('.ui-select'));
-
-    $.each(container, function(key, value) {
-        if (!$(value).is(e.target) && $(value).has(e.target).length === 0) {
-            $(value).removeClass('active');
-        }
-    });
-  });
-
-  // numeric input
-  $('.ui-number span').on('click', function(e){
-    var element = $(this).parent().find('input');
-    var currentValue = parseInt($(this).parent().find('input').val()) || 0;
-
-    if( $(this).data('action') == 'minus' ){
-      if(currentValue <= 1){
-        return false;
-      }else{
-        element.val( currentValue - 1 );
-      }
-    } else if( $(this).data('action') == 'plus' ){
-      if(currentValue >= 99){
-        return false;
-      } else{
-        element.val( currentValue + 1 );
-      }
-    }
-  });
 
   // Masked input
   $(".js-dateMask").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});

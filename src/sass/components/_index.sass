@@ -2,6 +2,7 @@
 
 .hero
   padding-top: 250px
+  min-height: 100vh
   flex: 1 1 auto
   display: flex
   flex-direction: column
@@ -62,3 +63,120 @@
 
   &__cta
     margin-top: 30px
+
+
++rh(800)
+  .hero
+    padding-top: 190px
+
+
+.grid
+  min-height: 100vh
+  flex: 1 1 auto
+  display: flex
+  &__col
+    position: relative
+    flex: 0 1 50%
+    width: 50%
+    display: flex
+    flex-direction: column
+
+  &__mouse
+    position: absolute
+    z-index: 5
+    bottom: 25px
+    left: 50%
+    transform: translate3d(-50%,0,0)
+
+.content
+  flex: 1 1 auto
+  display: flex
+  flex-direction: column
+  padding-left: 120px
+  padding-right: 80px
+  &--scrollable
+    margin-top: 450px
+    margin-bottom: 200px
+    height: 100vh
+    max-height: calc(100vh - 650px)
+    overflow-y: auto
+    overflow-x: hidden
+    // делаем марджин от родителя до границ прокручиваемой области
+    // вполтную к заголовку, сам заголовок фиксим
+    // добавлем паддинг тексту и блоки с фейдом
+    // задаем макс 100vh для создания условия прокуртки
+    &::before, &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      left: -120px
+      right: -120px
+      z-index: 2
+      height: 200px
+      background: white
+      filter: blur(22px)
+    &::before
+      top: 300px
+    &::after
+      bottom: 120px
+
+  &-image
+    flex: 1 1 auto
+    position: relative
+    // перекрываем фейд текста со скроллом
+    z-index: 5
+    overflow: hidden
+    img
+      position: absolute
+      z-index: 1
+      top: 50%
+      left: 50%
+      transform: translate3d(-50%,-50%, 0)
+      min-width: 100%
+      min-height: 100%
+      width: auto
+      height: auto
+  &__title
+    position: absolute
+    z-index: 5
+    top: 390px
+    left: 0px
+    right: 0
+    // тут нужен рефактор на резину
+    // чтобы цеплялось от текста, а не __col
+    padding-left: 20px
+    max-width: 520px
+    margin-left: auto
+    margin-right: auto
+    flex: 0 0 auto
+    // margin-bottom: 65px
+    font-size: 40px
+    letter-spacing: 7px
+    font-family: 'Roboto Slab', sans-serif
+
+  &__text
+    position: relative
+    flex: 0 0 auto
+    padding-top: 50px
+    max-width: 520px
+    margin-left: auto
+    margin-right: auto
+    p
+      font-size: 14px
+      letter-spacing: -.22px
+      line-height: 1.9
+
+
++rh(800)
+  .content
+    &--scrollable
+      margin-top: 300px
+      margin-bottom: 100px
+      height: 100vh
+      max-height: calc(100vh - 400px)
+      &::before
+        top: 150px
+      &::after
+        bottom: 20px
+    &__title
+      top: 240px

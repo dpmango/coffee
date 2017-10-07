@@ -4,13 +4,15 @@
   z-index: 10
   top: 0
   left: 0
-  right: 0
+  width: 100%
   background: white
   font-family: 'Roboto Slab', serif
+  transition: all $transitionSpeed $ease
   &__wrapper
     display: flex
     align-items: center
     padding: 60px 90px 100px 120px
+    transition: all $transitionSpeed $ease
   &__logo
     flex: 0 0 auto
     font-size: 95px
@@ -29,7 +31,10 @@
         padding: 5px
         transition: all $transitionSpeed $ease
         &:hover
-          color: $colorAcent
+          color: $colorHover
+      &.is-active
+        a
+          font-weight: 700
       &:last-child
         margin-right: 0
 
@@ -43,4 +48,22 @@
       margin-right: 25px
       transition: all $transitionSpeed $ease
       &:hover
-        color: $colorAcent
+        color: $colorHover
+
+  &.is-half
+    width: 50%
+    .header
+      &__wrapper
+        padding-left: 20px
+        padding-right: 20px
+        flex-direction: column
+      &__menu
+        margin-left: 0
+      &__socials
+        display: none
+
++rh(800)
+  .header
+    &__wrapper
+      padding-top: 30px
+      padding-bottom: 50px
