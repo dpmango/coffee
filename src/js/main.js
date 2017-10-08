@@ -53,14 +53,18 @@ $(document).ready(function(){
         $('.header').addClass('is-half');
         $('.navigation').addClass('is-visible');
         $('.controls').addClass('is-visible');
+
+        if ( nextIndex == lastIndex ){
+          $('.controls').addClass('is-last');
+        } else {
+          $('.controls').removeClass('is-last');
+        }
+
       } else {
+        // reset to hero
         $('.header').removeClass('is-half');
         $('.navigation').removeClass('is-visible')
         $('.controls').removeClass('is-visible');
-      }
-
-      if ( nextIndex == lastIndex ){
-
       }
 
       // custom navigation
@@ -72,6 +76,14 @@ $(document).ready(function(){
           setHeaderNav(currentSection);
           setNavProximity(currentSection);
         }
+      });
+
+      // increment progress
+      var totalIndex = $('.section').length
+      var incrementProgress = 70 - (30 / $('.section').length) * nextIndex
+
+      $('.controls__progress').css({
+        'transform': 'translate3d('+incrementProgress+'%,0,0)'
       });
     }
   });
@@ -165,6 +177,11 @@ $(document).ready(function(){
   // MOUSE CONTROLS
   $('[js-next-section]').on('click', function(){
     $.fn.fullpage.moveSectionDown()
+    return false
+  });
+
+  $('[js-first-section]').on('click', function(){
+    $.fn.fullpage.moveTo(1)
     return false
   });
 
@@ -273,7 +290,34 @@ $(document).ready(function(){
     $(this).parent().siblings().removeClass('is-active');
 
     $(this).parent().toggleClass('is-active');
-  })
+  });
+
+  // ANIMATIONS
+  $('.wow').each(function(i, el){
+    var elWatcher = scrollMonitor.create( $(el) );
+
+    var delay;
+    var animationName = "wowFade";
+    if ( $(window).width() < 768 ){
+      delay = 0
+    } else {
+      $(el).data('wow-delay');
+    }
+
+    elWatcher.enterViewport(function() {
+      $(el).css({
+        'animation-name': animationName,
+        'animation-delay': delay
+      });
+    });
+    elWatcher.exitViewport(function() {
+      $(el).css({
+        'animation-name': 'none',
+        'animation-delay': 0
+      });
+    });
+  });
+
 
 
   // HAMBURGER TOGGLER

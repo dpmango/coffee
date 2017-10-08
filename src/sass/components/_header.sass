@@ -50,17 +50,19 @@
       &:hover
         color: $colorHover
 
-  &.is-half
-    width: 50%
-    .header
-      &__wrapper
-        padding-left: 20px
-        padding-right: 20px
-        flex-direction: column
-      &__menu
-        margin-left: 0
-      &__socials
-        display: none
++rmin($wide)
+  .header
+    &.is-half
+      width: 50%
+      .header
+        &__wrapper
+          padding-left: 20px
+          padding-right: 20px
+          flex-direction: column
+        &__menu
+          margin-left: 0
+        &__socials
+          display: none
 
 +rh(800)
   .header
@@ -73,8 +75,15 @@
     &__wrapper
       padding-left: 40px
       padding-right: 40px
+      padding-bottom: 30px
     &__menu
-      li
-        margin-right: 20px
-        &:last-child
-          margin-right: 0
+      margin: 0 0 0 85px
+    &__socials
+      display: none
+    &__logo
+      font-size: 77px
+    // &__menu
+    //   li
+    //     margin-right: 20px
+    //     &:last-child
+    //       margin-right: 0

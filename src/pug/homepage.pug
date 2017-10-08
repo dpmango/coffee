@@ -307,12 +307,17 @@ block content
   // CONTROLS
   //////////
   .controls
-    .controls__mouse(js-next-section)
-      include ../icons/mouse.svg
-    .controls__socials
-      a(href='#' target="_blank") IN
-      a(href='#' target="_blank") FB
-    
+    .controls__wrapper
+      .controls__mouse(js-next-section)
+        include ../icons/mouse.svg
+      .controls__up(js-first-section)
+        +icon('ico-down-arrow')
+        span Наверх
+      .controls__socials
+        a(href='#' target="_blank") IN
+        a(href='#' target="_blank") FB
+      .controls__progress
+      
 
   // DOTS NAVIGATION
   .navigation(js-navigation)
