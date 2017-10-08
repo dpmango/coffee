@@ -50,10 +50,12 @@ $(document).ready(function(){
       // set classes for invisible elements
       if ( nextIndex >= 2 ){
         $('.header').addClass('is-half');
-        $('.navigation').addClass('is-visible')
+        $('.navigation').addClass('is-visible');
+        $('.controls').addClass('is-visible');
       } else {
         $('.header').removeClass('is-half');
         $('.navigation').removeClass('is-visible')
+        $('.controls').removeClass('is-visible');
       }
 
       // custom navigation
@@ -100,26 +102,51 @@ $(document).ready(function(){
       var navProximity = parseInt( $(nav).attr('data-proximity') );
       var thisIndex = $(nav).index() + 1;
 
-      // console.log( $(nav).attr('data-ask-for'), "curNavIndex" + curNavIndex, "navProximity" + navProximity )
-      if ( curNavIndex > thisIndex){
-        $(nav).attr('data-proximity', navProximity + 1 );
+      if ( thisIndex == curNavIndex){
+        var activeEl = $(nav);
+
+        if ( activeEl.prev() ){
+          activeEl.prev().attr('data-proximity', 2 );
+        }
+        if ( activeEl.prev().prev() ){
+          activeEl.prev().prev().attr('data-proximity', 3 );
+        }
+        if ( activeEl.prev().prev().prev() ){
+          activeEl.prev().prev().prev().attr('data-proximity', 4 );
+        }
+        if ( activeEl.prev().prev().prev().prev() ){
+          activeEl.prev().prev().prev().prev().attr('data-proximity', 5 );
+        }
+
+        if ( activeEl.next() ){
+          activeEl.next().attr('data-proximity', 2 );
+        }
+        if ( activeEl.next().next() ){
+          activeEl.next().next().attr('data-proximity', 3 );
+        }
+        if ( activeEl.next().next().next() ){
+          activeEl.next().next().next().attr('data-proximity', 4 );
+        }
+        if ( activeEl.next().next().next().next() ){
+          activeEl.next().next().next().next().attr('data-proximity', 5 );
+        }
       }
 
-      // пока работает только вперед
-
-      // else if ( curNavIndex < thisIndex ) {
-      //   $(nav).attr('data-proximity', navProximity - 1 );
-      // }
     });
-
   }
 
   // HEADER NAVIGATION
-  $('[js-header-navigation] a').each(function(i,nav){
+  $('[js-header-navigation] a, [js-navigation] > div').each(function(i,nav){
     var self = $(nav);
 
     self.on('click', function(e){
-      var targetName = self.attr('href').substring(1);
+      var targetName
+      if ( self.attr('href') ){
+        targetName = self.attr('href').substring(1)
+      } else if ( self.attr('data-ask-for') ) {
+        targetName = self.attr('data-ask-for');
+      }
+
       var targetSection = $('.section[data-section='+targetName+']')
 
       if (targetSection){
@@ -130,92 +157,61 @@ $(document).ready(function(){
 
   });
 
+  // MOUSE CONTROLS
+  $('[js-next-section]').on('click', function(){
+    $.fn.fullpage.moveSectionDown()
+    return false
+  });
+
+
+  //////////////
+  // CONTENT PART
+  /////////////
+
+  $('.content-slider__slide').on('click', function(){
+
+    if ( $(this).data('tab-for') ){
+      tabHandler( $(this).data('tab-for') );
+    } else {
+      $(this).siblings().removeClass('is-active');
+      $(this).addClass('is-active');
+    }
+
+  });
+
+  // tabs
+  $('[js-tab]').on('click', function(){
+    tabHandler( $(this).data('tab-for') )
+  });
+
+  function tabHandler(name){
+    var targetNav = $('[js-tab][data-tab-for='+name+']');
+    var targetSlide = $('.content-slider__slide[data-tab-for='+name+']');
+    var targetTab = $('.content__tab[data-tab='+name+']');
+
+    if ( targetNav ){
+      targetNav.siblings().removeClass('is-active')
+      targetNav.addClass('is-active');
+    }
+
+    if ( targetSlide ){
+      targetSlide.siblings().removeClass('is-active')
+      targetSlide.addClass('is-active');
+    }
+
+    if ( targetTab ){
+      targetTab.siblings().removeClass('is-active')
+      targetTab.addClass('is-active');
+    }
+
+  }
+
   // HAMBURGER TOGGLER
   $('.hamburger').on('click', function(){
     $('.hamburger').toggleClass('active');
     $('.mobile-navi').toggleClass('active');
   });
 
-  // VIDEO PLAY
-  $('.promo-video .icon').on('click', function(){
-    $(this).closest('.promo-video').toggleClass('playing');
-    $(this).closest('.promo-video').find('iframe').attr("src", $("iframe").attr("src").replace("autoplay=0", "autoplay=1"));
-  });
 
-
-  //////////
-  // SLIDERS
-  //////////
-
-  $('.trending__wrapper').slick({
-    autoplay: true,
-    dots: false,
-    arrows: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    centerMode: true,
-    variableWidth: true
-  });
-
-  //////////
-  // MODALS
-  //////////
-  // Custom modals
-  // $('*[data-modal]').on('click', function(){
-  //   // remove all active first
-  //   $('.modal').removeClass('opened');
-  //
-  //   // find by id
-  //   var target = $(this).data('modal');
-  //   $('#'+target).addClass('opened');
-  //
-  //   window.location.hash = target;
-  // });
-  //
-  // $('.modal__close').on('click', function(){
-  //   $(this).closest('.modal').removeClass('opened');
-  //   window.location.hash = "";
-  // });
-  //
-  // // CHECK SAVED STATE
-  // if(window.location.hash) {
-  //   var hash = window.location.hash.substring(1);
-  //   $('#'+hash).addClass('opened');
-  // }
-  //
-
-
-  // Magnific Popup
-  // var startWindowScroll = 0;
-  $('.js-popup').magnificPopup({
-    type: 'inline',
-    fixedContentPos: true,
-    fixedBgPos: true,
-    overflowY: 'auto',
-    closeBtnInside: true,
-    preloader: false,
-    midClick: true,
-    removalDelay: 300,
-    mainClass: 'popup-buble',
-    callbacks: {
-      beforeOpen: function() {
-        // startWindowScroll = _window.scrollTop();
-        // $('html').addClass('mfp-helper');
-      },
-      close: function() {
-        // $('html').removeClass('mfp-helper');
-        // _window.scrollTop(startWindowScroll);
-      }
-    }
-  });
-
-  ////////////
-  // UI
-  ////////////
-
-  // Masked input
-  $(".js-dateMask").mask("99.99.99",{placeholder:"ДД.ММ.ГГ"});
-  $("input[type='tel']").mask("+7 (000) 000-0000", {placeholder: "+7 (___) ___-____"});
 
 });

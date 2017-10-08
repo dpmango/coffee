@@ -81,13 +81,6 @@
     display: flex
     flex-direction: column
 
-  &__mouse
-    position: absolute
-    z-index: 5
-    bottom: 25px
-    left: 50%
-    transform: translate3d(-50%,0,0)
-
 .content
   flex: 1 1 auto
   display: flex
@@ -136,6 +129,41 @@
       min-height: 100%
       width: auto
       height: auto
+  &-slider
+    display: flex
+    flex: 1 1 auto
+    position: relative
+    // перекрываем фейд текста со скроллом
+    z-index: 5
+    overflow: hidden
+    &__slide
+      position: relative
+      overflow: hidden
+      width: 16.6%
+      cursor: pointer
+      transition: all $transitionSpeed $ease
+      &::before
+        display: block
+        content: ' '
+        position: absolute 0
+        z-index: 2
+        background: rgba(white, .5)
+        transition: all $transitionSpeed $ease
+      img
+        position: absolute
+        z-index: 1
+        top: 50%
+        left: 50%
+        transform: translate3d(-50%,-50%, 0)
+        min-width: 100%
+        min-height: 100%
+        width: auto
+        height: auto
+      &.is-active
+        width: 50%
+        &::before
+          opacity: 0
+
   &__title
     position: absolute
     z-index: 5
@@ -158,6 +186,7 @@
     position: relative
     flex: 0 0 auto
     padding-top: 50px
+    padding-bottom: 120px
     max-width: 520px
     margin-left: auto
     margin-right: auto
@@ -165,18 +194,152 @@
       font-size: 14px
       letter-spacing: -.22px
       line-height: 1.9
+    &--tabs
+      display: flex
+      max-width: 900px
+
+  &__h3
+    font-weight: 700
+    margin-bottom: 15px
+
+  // inside content (text + tabs)
+  &__tabs
+    display: flex
+    .content
+      &__tab-nav
+        flex: 0 0 auto
+      &__tab-el
+        &::after, &::before
+          display: none
+      &__tab
+        flex: 0 1 100%
+        border-left: 2px solid #0F0F0F
+        padding-top: 0
+
+  &__tab-nav
+    flex: 0 1 auto
+
+  &__tab-el
+    position: relative
+    font-family: 'Roboto Slab', sans-serif
+    font-size: 18px
+    font-weight: 300
+    margin-bottom: 25px
+    margin-right: 20px
+    letter-spacing: -.22px
+    cursor: pointer
+    transition: all $transitionSpeed $ease
+    &.is-active, &:hover
+      color: $colorAcent
+    &.is-active
+      &::after, &::before
+        opacity: 1
+    &:last-child
+      margin-bottom: 0
+    &::after, &::before
+      display: inline-block
+      content: ' '
+      position: absolute
+      background: #A5A5A5
+      opacity: 0
+      pointer-events: none
+      transition: all $transitionSpeed $ease
+    &::after
+      top: 50%
+      right: -1000px
+      width: 1000px
+      transform: translateY(-50%)
+      height: 1px
+    &::before
+      top: 50%
+      right: 20px
+      transform: translateY(-50%)
+      size: 4px
+      border-radius: 50%
+
+  &__tab
+    display: none
+    flex: 0 1 50%
+    padding-top: 30px
+    padding-left: 20px
+    padding-right: 20px
+    &.is-active
+      display: block
 
 
 +rh(800)
   .content
     &--scrollable
       margin-top: 300px
-      margin-bottom: 100px
+      margin-bottom: 50px
       height: 100vh
-      max-height: calc(100vh - 400px)
+      max-height: calc(100vh - 350px)
       &::before
         top: 150px
       &::after
-        bottom: 20px
+        bottom: -30px
     &__title
       top: 240px
+
++r($wide)
+  .content
+    padding-left: 60px
+    padding-right: 40px
+    &__title
+      font-size: 30px
+      margin-left: 0
+      padding-left: 60px
+
+
+.controls
+  display: flex
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 10
+  opacity: 0
+  pointer-events: none
+  transform: translate3d(0,100%,0)
+  transition: all $transitionSpeed $ease
+  &.is-visible
+    opacity: 1
+    pointer-events: all
+    transform: translate3d(0,0,0)
+  &__mouse
+    flex: 0 1 50%
+    padding: 25px 10px
+    text-align: center
+    cursor: pointer
+  &__socials
+    flex: 0 1 50%
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding: 10px 115px 10px 30px
+    background: #212121
+    font-size: 18px
+    color: white
+    font-family: 'Roboto Slab', sans-serif
+    font-weight: 700
+    a
+      display: inline-block
+      padding: 5px
+      margin-right: 25px
+      transition: all $transitionSpeed $ease
+      &:last-child
+        margin-right: 0
+      &:hover
+        color: $colorHover
+
++rh(800)
+  .controls
+    &__mouse
+      padding: 5px 10px
+      svg
+        transform: scale(.75)
+
++r($wide)
+  .controls
+    &__socials
+      padding-right: 40px
