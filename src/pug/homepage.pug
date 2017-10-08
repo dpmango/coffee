@@ -4,7 +4,7 @@ title: Labaratoria coffee
 extends shared/_layout
 block content
   div(js-fullpage)
-    .section(data-section="intro")
+    .section(data-section="intro" data-anchor="intro")
       // HERO :: START
       .hero
         .hero__wrapper
@@ -20,7 +20,7 @@ block content
             img.hero__slide-bg(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
       
     // SECTION
-    .section(data-section="about")
+    .section(data-section="about" data-anchor="about1")
       .grid
         .grid__col
           .content.content--scrollable
@@ -34,7 +34,7 @@ block content
             img(data-src='img/slideBg1.jpg' data-srcset='img/slideBg1@2x.jpg 2x')
       
     // SECTION
-    .section(data-section="about")
+    .section(data-section="about" data-anchor="about2")
       .grid
         .grid__col
           .content.content--scrollable
@@ -48,7 +48,7 @@ block content
             img(data-src='img/slideBg1.jpg' data-srcset='img/slideBg1@2x.jpg 2x')
     
     // SECTION
-    .section(data-section="about")
+    .section(data-section="about" data-anchor="about3")
       .grid
         .grid__col
           .content.content--scrollable
@@ -88,7 +88,7 @@ block content
               img(data-src='img/slideBgAbout4.jpg' data-srcset='img/slideBgAbout4@2x.jpg 2x')
 
     // SECTION
-    .section(data-section="about")
+    .section(data-section="about" data-anchor="about4")
       .grid
         .grid__col
           .content.content--scrollable
@@ -105,7 +105,7 @@ block content
     //////////
       
     // SECTION
-    .section(data-section="roasting")
+    .section(data-section="roasting" data-anchor="roasting1")
       .grid
         .grid__col
           .content.content--scrollable
@@ -130,13 +130,14 @@ block content
                   p Маленький ростер появился в «Лаборатории кофе» тоже летом 2017 года. Он открыл новые возможности для обжарщиков по экспериментам с зерном и позволил изменить подход к подбору профилей. WPG1 позволяет обжаривать семплы 100-200 грамм. Его настройки профилей достаточно просто переносятся на промышленные масштабы W15A и W60A. 
               
         .grid__col
-          .content-image
+          .content-image.content-image--m-right
             img(data-src='img/slideBgObjarka1.jpg' data-srcset='img/slideBgObjarka1@2x.jpg 2x' data-for='roasting_1').is-active
             img(data-src='img/slideBgObjarka2.jpg' data-srcset='img/slideBgObjarka2@2x.jpg 2x' data-for='roasting_2')
             img(data-src='img/slideBgObjarka3.jpg' data-srcset='img/slideBgObjarka3@2x.jpg 2x' data-for='roasting_3')
+            img.content-image__wood(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
 
     // SECTION
-    .section(data-section="roasting")
+    .section(data-section="roasting" data-anchor="roasting2")
       .grid
         .grid__col
           .content.content--scrollable
@@ -149,7 +150,7 @@ block content
             img(data-src='img/slideBgObjarka4.jpg' data-srcset='img/slideBgObjarka4@2x.jpg 2x')
                                             
     // SECTION
-    .section(data-section="roasting")
+    .section(data-section="roasting" data-anchor="roasting3")
       .grid
         .grid__col
           .content.content--scrollable
@@ -168,7 +169,7 @@ block content
     //////////
     
     // SECTION
-    .section(data-section="service")
+    .section(data-section="service" data-anchor="service")
       .grid
         .grid__col
           .content.content--scrollable
@@ -187,9 +188,10 @@ block content
                   a(href='#').btn.btn-outline Связаться
                   
         .grid__col
-          .content-image
+          .content-image.content-image--m-right
             img(data-src='img/slideBgService1.jpg' data-srcset='img/slideBgService1@2x.jpg 2x' data-for='service_1').is-active
             img(data-src='img/slideBgService2.jpg' data-srcset='img/slideBgService2@2x.jpg 2x' data-for='service_2')
+            img.content-image__wood(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
 
                   
     //////////
@@ -197,7 +199,7 @@ block content
     //////////
     
     // SECTION
-    .section(data-section="products")
+    .section(data-section="products" data-anchor="products")
       .grid
         .grid__col
           .content.content--scrollable
@@ -230,7 +232,7 @@ block content
     //////////
 
     // SECTION
-    .section(data-section="contacts")
+    .section(data-section="contacts" data-anchor="contacts")
       .grid
         .grid__col
           .content.content--scrollable
@@ -298,6 +300,8 @@ block content
           .content-map
             // map here
             #contact-map
+            img.content-map__wood(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
+        
 
   //////////
   // CONTROLS

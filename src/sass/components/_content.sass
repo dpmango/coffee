@@ -48,7 +48,7 @@
     // перекрываем фейд текста со скроллом
     z-index: 5
     overflow: hidden
-    img
+    img:not(.content-image__wood)
       position: absolute
       z-index: 1
       top: 50%
@@ -63,6 +63,21 @@
         opacity: 0
       &.is-active
         opacity: 1
+    &--m-right
+      img:not(.content-image__wood)
+        left: calc(50% - 15%)
+    &--m-left
+      img:not(.content-image__wood)
+        left: calc(50% + 15%)
+
+    &__wood
+      position: absolute
+      top: 0
+      bottom: 0
+      right: 0
+      width: 15%
+      z-index: 10
+
   &-slider
     display: flex
     flex: 1 1 auto
@@ -107,6 +122,13 @@
     overflow: hidden
     > div
       flex: 1 1 auto
+    &__wood
+      position: absolute
+      top: 0
+      bottom: 0
+      right: 0
+      width: 15%
+      z-index: 10
   &__title
     position: absolute
     z-index: 5
