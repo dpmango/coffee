@@ -15,10 +15,10 @@ $(document).ready(function(){
     error.appendTo(element.parent("div"));
   }
   var validateHighlight = function(element) {
-    $(element).parent('div').addClass("has-error");
+    $(element).addClass("has-error");
   }
   var validateUnhighlight = function(element) {
-    $(element).parent('div').removeClass("has-error");
+    $(element).removeClass("has-error");
   }
   var validateSubmitHandler = function(form) {
     $(form).addClass('loading');
@@ -59,39 +59,51 @@ $(document).ready(function(){
   /////////////////////
   // REGISTRATION FORM
   ////////////////////
-  $(".js-registration-form").validate({
-    errorPlacement: validateErrorPlacement,
+  $("[js-validate-offer]").validate({
+    errorPlacement: function(){
+      return false
+    },
     highlight: validateHighlight,
     unhighlight: validateUnhighlight,
-    submitHandler: validateSubmitHandler,
+    submitHandler: function(form) {
+      $(form).addClass('is-loading');
+
+      setTimeout(function(){
+        // remove is-ok class for error in prodcution
+        $(form).removeClass('is-loading');
+        $(form).parent().addClass('is-ok');
+        // remove is-ok class for error in prodcution
+      }, 350);
+
+      // // ajax posting for production
+      // $.ajax({
+      //   type: "POST",
+      //   url: $(form).attr('action'),
+      //   data: $(form).serialize(),
+      //   success: function(response) {
+      //     $(form).removeClass('loading');
+      //     var data = $.parseJSON(response);
+      //     if (data.status == 'success') {
+      //       // do something I can't test
+      //       $(form).removeClass('is-loading');
+      //       $(form).parent().addClass('is-ok');
+      //     } else {
+      //       // $(form).find('[data-error]').html(data.message).show();
+      //     }
+      //   }
+      // });
+    },
     rules: {
-      last_name: "required",
-      first_name: "required",
       email: {
         required: true,
         email: true
       },
-      password: {
-        required: true,
-        minlength: 6,
-      }
-      // phone: validatePhone
     },
     messages: {
-      last_name: "Заполните это поле",
-      first_name: "Заполните это поле",
       email: {
           required: "Заполните это поле",
           email: "Email содержит неправильный формат"
       },
-      password: {
-          required: "Заполните это поле",
-          email: "Пароль мимимум 6 символов"
-      },
-      // phone: {
-      //     required: "Заполните это поле",
-      //     minlength: "Введите корректный телефон"
-      // }
     }
   });
 

@@ -45,7 +45,7 @@ block content
               p 2017 год стал годом перемен для для «Лаборатории кофе». Вывод, что производство нужно расширять, был сделан ещё в 2016 году, когда объём заказов перешагнул отметку в 10 тонн в месяц и Giesen W15A перестал справляться (его производительная вместимость — до 15 кг). Обжарщики периодически работали буквально круглосуточно, чтобы обжарить нужный объём под поток заказов. В результате был приобретен новый ростер Giesen W60A, промышленная вместительность которого – 60 кг. Вместе с ним в арсенале «Лаборатории кофе» появился WPG1, предназначенный для семплов 100-200 г. Для расширения производства компании снова потребовалось переехать, на этот раз в отдельное двухэтажное здание общей площадью 560 кв. м. на ул. Синельниковской. Здесь кроме офиса и производственного цеха у «Лаборатории кофе» оборудованы большой склад, а на втором этаже здания расположился офис компании. 
         .grid__col
           .content-image
-            img(data-src='img/slideBg2.jpg' data-srcset='img/slideBg2@2x.jpg 2x')
+            img(data-src='img/slideBg1.jpg' data-srcset='img/slideBg1@2x.jpg 2x')
     
     // SECTION
     .section(data-section="about")
@@ -103,8 +103,7 @@ block content
     //////////
     // ROASTING
     //////////
-    
-    
+      
     // SECTION
     .section(data-section="roasting")
       .grid
@@ -126,15 +125,16 @@ block content
                 .content__tab(data-tab="roasting_2")
                   .content__h3 Giesen W15A
                   p На производстве «Лаборатории кофе» этот ростер работает с начала 2016 года. Вместимость W15A — до 15 кг. Сегодня на нём обжаривается основной ассортимент наших моносортов под альтернативные способы заваривания кофе. 
-                  
                 .content__tab(data-tab="roasting_3")
                   .content__h3 Giesen WPG1
                   p Маленький ростер появился в «Лаборатории кофе» тоже летом 2017 года. Он открыл новые возможности для обжарщиков по экспериментам с зерном и позволил изменить подход к подбору профилей. WPG1 позволяет обжаривать семплы 100-200 грамм. Его настройки профилей достаточно просто переносятся на промышленные масштабы W15A и W60A. 
               
         .grid__col
           .content-image
-            img(data-src='img/slideBgObjarka1.jpg' data-srcset='img/slideBgObjarka1@2x.jpg 2x')
-                    
+            img(data-src='img/slideBgObjarka1.jpg' data-srcset='img/slideBgObjarka1@2x.jpg 2x' data-for='roasting_1').is-active
+            img(data-src='img/slideBgObjarka2.jpg' data-srcset='img/slideBgObjarka2@2x.jpg 2x' data-for='roasting_2')
+            img(data-src='img/slideBgObjarka3.jpg' data-srcset='img/slideBgObjarka3@2x.jpg 2x' data-for='roasting_3')
+
     // SECTION
     .section(data-section="roasting")
       .grid
@@ -174,12 +174,23 @@ block content
           .content.content--scrollable
             .content__title Сервис
             .content__text
-              // тут переключалка
+              .content__tabs
+                .content__tab-nav
+                  .content__tab-el(js-tab data-tab-for="service_1").is-active Настройка и обслуживание оборудования
+                  .content__tab-el(js-tab data-tab-for="service_2") Повышение квалификации бариста
 
+                .content__tab(data-tab="service_1").is-active
+                  p «Лаборатория кофе» специализируется на качественной обжарке зелёного кофе со всего мира. Прежде чем стать вкусным напитком, наше зерно проходит путь в несколько этапов: хранение, доставка, приготовление. Мы стараемся отслеживать все этапы от поставки зерна до чашки, чтобы гарантировать качество и вкус. Именно поэтому мы помогаем нашим партнёрам с подбором и настройкой кофемашин, кофемолок и другого оборудования. 
+                .content__tab(data-tab="service_2")
+                  p Руки бариста – это один из важных элементов в цепочке от кофейной плантации до потребителя. Затраты на качественное свежеобжаренное зерно и хорошее оборудование могут сойти на нет, если бариста не умеет хорошо приготовить кофе. Именно поэтому мы проводим бесплатное обучение бариста для наших партнёров: чтобы наше зерно попадало в понимающие руки, которые смогут приготовить отличную чашку кофе. 
+                  p По всем вопросам, связанным с организацией обучения для наших партнёров, можно обращаться в службу клиентского сервиса «Лаборатории кофе». 
+                  a(href='#').btn.btn-outline Связаться
+                  
         .grid__col
           .content-image
-            img(data-src='img/slideBgService1.jpg' data-srcset='img/slideBgService1@2x.jpg 2x')
-                  
+            img(data-src='img/slideBgService1.jpg' data-srcset='img/slideBgService1@2x.jpg 2x' data-for='service_1').is-active
+            img(data-src='img/slideBgService2.jpg' data-srcset='img/slideBgService2@2x.jpg 2x' data-for='service_2')
+
                   
     //////////
     // PRODUCTS
@@ -193,6 +204,21 @@ block content
             .content__title Продукция
             .content__text
               // тут текст продукции
+              p Наша продуктовая линейка предусматривает максимум возможностей для партнёров, в зависимости от формата заведения, предпочтений и особенностей целевой аудитории. У нас есть недорогие бленды для массового потребителя, популярные моносорта для ценителей, уникальные specialty-лоты для гурманов. Для крупных сетей мы зачастую разрабатываем индивидуальные бленды, позволяющие держать оптимальный баланс вкуса, качества и цены.
+              .get-offer
+                .get-offer__btn(js-offer-trigger)
+                  a(href='#').btn.btn-outline.btn-outline--black Получить прайс- лист
+                form.get-offer__form(js-validate-offer)
+                  .get-offer__form-input
+                    label Ваш e-mail
+                    input(type='email' name="email")
+                      
+                  button(type='submit')
+                    +icon('ico-btn-next')
+                .get-offer__sucess
+                  a(href="#").btn.btn-outline.btn-outline--black(js-offer-reset) Отправить повторно
+                  .get-offer__sucess-message Каталог отправлен вам на почту
+                  
 
         .grid__col
           .content-image
@@ -210,13 +236,72 @@ block content
           .content.content--scrollable
             .content__title Контакты
             .content__text
-              // тут текст продукции
+              // тут текст контактов
+              .contact-tab.is-active
+                .contact-tab__head
+                  span Служба  клиентского сервиса
+                  +icon('ico-down-arrow')
+                .contact-tab__content
+                  p 
+                    b Менеджеры по работе с клиентами. <br>
+                    | Если вы хотите заказать кофе, сиропы, чай-латте, какао; уточнить детали заказа. 
+
+                  p 
+                    | Телефон: 
+                    a(href="tel:+74955855683") +7 (495) 585-56-83; <br>
+                    | e-mail: 
+                    a(href="mailto:zakaz@laboratoriacoffee.ru") zakaz@laboratoriacoffee.ru 
+
+                  p 
+                    b Александр Горлов, <br>
+                    |  руководитель отдела клиентского сервиса
+
+                  p 
+                    | Телефон: 
+                    a(href="tel:+79263424298") +7(926) 342-42-98<br>
+                    | e-mail: 
+                    a(href="mailto:rescue@laboratoriacoffee.ru") rescue@laboratoriacoffee.ru 
+
+              // tab
+              .contact-tab
+                .contact-tab__head
+                  span Для СМИ
+                  +icon('ico-down-arrow')
+                  
+                .contact-tab__content
+                  p 
+                    | Елена Чернякова, <br> PR-директор. <br>
+                    | Если у вас есть предложение,  вы проводите мероприятие  или ищете информацию о нас. 
+
+                  p
+                    | Телефон: 
+                    a(href="tel:+79857502628") +7 (985) 750-26-28<br>
+                    | e-mail: 
+                    a(href="mailto:pr@laboratoriacoffee.ru") pr@laboratoriacoffee.ru 
+              
+              // tab
+              .contact-tab
+                .contact-tab__head
+                  span Руководство
+                  +icon('ico-down-arrow')
+                  
+                .contact-tab__content
+                  p 
+                    b Александра Тищенко, <br> директор
+                  p
+                    | Телефон: 
+                    a(href="tel:+79035689933") +7 (903) 568-99-33<br>
+                    | e-mail: 
+                    a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
 
         .grid__col
-          .content-image
-            // тут карта        
+          .content-map
+            // map here
+            #contact-map
 
+  //////////
   // CONTROLS
+  //////////
   .controls
     .controls__mouse(js-next-section)
       include ../icons/mouse.svg

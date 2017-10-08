@@ -1,0 +1,53 @@
+
+.controls
+  display: flex
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 10
+  opacity: 0
+  pointer-events: none
+  transform: translate3d(0,100%,0)
+  transition: all $transitionSpeed $ease
+  &.is-visible
+    opacity: 1
+    pointer-events: all
+    transform: translate3d(0,0,0)
+  &__mouse
+    flex: 0 1 50%
+    padding: 25px 10px
+    text-align: center
+    cursor: pointer
+  &__socials
+    flex: 0 1 50%
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    padding: 10px 115px 10px 30px
+    background: #212121
+    font-size: 18px
+    color: white
+    font-family: 'Roboto Slab', sans-serif
+    font-weight: 700
+    a
+      display: inline-block
+      padding: 5px
+      margin-right: 25px
+      transition: all $transitionSpeed $ease
+      &:last-child
+        margin-right: 0
+      &:hover
+        color: $colorHover
+
++rh(800)
+  .controls
+    &__mouse
+      padding: 5px 10px
+      svg
+        transform: scale(.75)
+
++r($wide)
+  .controls
+    &__socials
+      padding-right: 40px

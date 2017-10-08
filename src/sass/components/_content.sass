@@ -1,74 +1,3 @@
-// INDEX
-
-.hero
-  padding-top: 250px
-  min-height: 100vh
-  flex: 1 1 auto
-  display: flex
-  flex-direction: column
-  &__wrapper
-    flex: 1 1 auto
-    display: flex
-  &__slide
-    display: flex
-    flex-direction: column
-    justify-content: center
-    position: relative
-    overflow: hidden
-    width: 8%
-    &.is-active
-      width: 80%
-    &.is-next
-      margin-left: auto
-    &-bg
-      position: absolute
-      z-index: 1
-      top: 50%
-      left: 50%
-      transform: translate3d(-50%,-50%, 0)
-      min-width: 100%
-      min-height: 100%
-      width: auto
-      height: auto
-
-    &-content
-      display: flex
-      flex-direction: column
-      position: relative
-      z-index: 2
-      color: white
-      text-align: center
-
-  &__uptitle
-    font-family: 'Roboto Slab'
-    font-size: 30px
-    font-weight: 700
-    letter-spacing: 6.23px
-    text-shadow: 0 0 10px #000000
-
-  &__title
-    margin-top: 15px
-    font-family: 'Hamline'
-    font-size: 125px
-    font-weight: 700
-    line-height: 1
-    letter-spacing: -.22px
-    text-shadow: 0 0 10px #000000
-
-  &__description
-    margin-top: 15px
-    letter-spacing: -0.17px
-    text-shadow: 0 0 10px #000000
-    line-height: 1.67
-
-  &__cta
-    margin-top: 30px
-
-
-+rh(800)
-  .hero
-    padding-top: 190px
-
 
 .grid
   min-height: 100vh
@@ -129,6 +58,11 @@
       min-height: 100%
       width: auto
       height: auto
+      transition: all $transitionSpeed $ease
+      &[data-for]
+        opacity: 0
+      &.is-active
+        opacity: 1
   &-slider
     display: flex
     flex: 1 1 auto
@@ -163,7 +97,16 @@
         width: 50%
         &::before
           opacity: 0
-
+  &-map
+    flex: 1 1 auto
+    display: flex
+    flex-direction: column
+    position: relative
+    // перекрываем фейд текста со скроллом
+    z-index: 5
+    overflow: hidden
+    > div
+      flex: 1 1 auto
   &__title
     position: absolute
     z-index: 5
@@ -207,7 +150,7 @@
     display: flex
     .content
       &__tab-nav
-        flex: 0 0 auto
+        flex: 0 1 auto
       &__tab-el
         &::after, &::before
           display: none
@@ -291,55 +234,48 @@
       padding-left: 60px
 
 
-.controls
-  display: flex
-  position: absolute
-  bottom: 0
-  left: 0
-  right: 0
-  z-index: 10
-  opacity: 0
-  pointer-events: none
-  transform: translate3d(0,100%,0)
-  transition: all $transitionSpeed $ease
-  &.is-visible
-    opacity: 1
-    pointer-events: all
-    transform: translate3d(0,0,0)
-  &__mouse
-    flex: 0 1 50%
-    padding: 25px 10px
-    text-align: center
-    cursor: pointer
-  &__socials
-    flex: 0 1 50%
+.contact-tab
+  &__head
+    position: relative
     display: flex
     align-items: center
-    justify-content: flex-end
-    padding: 10px 115px 10px 30px
-    background: #212121
-    font-size: 18px
-    color: white
+    justify-content: space-between
+    padding: 15px 20px
     font-family: 'Roboto Slab', sans-serif
     font-weight: 700
-    a
+    font-size: 18px
+    cursor: pointer
+    letter-spacing: -.22px
+    &::before
       display: inline-block
-      padding: 5px
-      margin-right: 25px
+      content: ' '
+      position: absolute
+      top: 0
+      left: 0
+      height: 60px
+      width: 2px
+      background: #0F0F0F
+      opacity: 0
+      transform: translate3d(-15px,0,0)
       transition: all $transitionSpeed $ease
-      &:last-child
-        margin-right: 0
+    .ico
+      font-size: 10px
+      color: rgba(#0F0F0F, .7)
+
+  &__content
+    display: none
+    font-size: 12px
+    letter-spacing: 2em
+    padding-left: 50px
+    a
+      transition: all $transitionSpeed $ease
       &:hover
-        color: $colorHover
+        color: $colorAcent
 
-+rh(800)
-  .controls
-    &__mouse
-      padding: 5px 10px
-      svg
-        transform: scale(.75)
-
-+r($wide)
-  .controls
-    &__socials
-      padding-right: 40px
+  &.is-active
+    .contact-tab__head
+      &::before
+        opacity: 1
+        transform: translate3d(0,0,0)
+    .contact-tab__content
+      display: block

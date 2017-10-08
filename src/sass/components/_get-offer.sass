@@ -1,0 +1,95 @@
+// OFFER
+.get-offer
+  position: relative
+  margin-top: 40px
+  margin-bottom: 40px
+  &.is-form
+    .get-offer__btn
+      pointer-events: none
+      transform: translate3d(0,-15px,0)
+      opacity: 0
+    .get-offer__form
+      opacity: 1
+      transform: translate3d(0,0,0)
+      pointer-events: all
+  &.is-ok
+    .get-offer__form
+      opacity: 0
+      transform: translate3d(0,-20px,0)
+      pointer-events: none
+    .get-offer__sucess
+      opacity: 1
+      transform: translate3d(0,0,0)
+      pointer-events: all
+
+  &__btn
+    opacity: 1
+    transform: translate3d(0,0px,0)
+    transition: all $transitionSpeed $ease
+  &__form
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    display: flex
+    align-items: flex-end
+    color: $colorHover
+    opacity: 0
+    pointer-events: none
+    transform: translate3d(0,25px,0)
+    transition: all $transitionSpeed $ease
+    &.is-loading
+      opacity: .75 !important
+      pointer-events: none !important
+
+    &-input
+      label
+        display: block
+        margin-bottom: 10px
+        font-size: 14px
+      input
+        -webkit-apperance: none
+        border-radius: 40px
+        padding: 13px 15px
+        border: 1px solid $colorHover
+        transition: all $transitionSpeed $ease
+        &::placeholder
+          color: $colorHover
+        &:focus
+          border-color: $colorAcent
+        &.has-error
+          border-color: tomato
+    button
+      -webkit-apperance: none
+      display: flex
+      justify-content: center
+      align-items: center
+      padding-left: 14px
+      background: transparent
+      border-radius: 50%
+      size: 40px
+      margin-left: 15px
+      font-size: 18px
+      color: $colorHover
+      border: 1px solid $colorHover
+      cursor: pointer
+      transition: all $transitionSpeed $ease
+      &:hover
+        border-color: $colorAcent
+        background: $colorAcent
+        color: white
+
+  &__sucess
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    opacity: 0
+    pointer-events: none
+    transform: translate3d(0,25px,0)
+    transition: all $transitionSpeed $ease
+    &-message
+      margin-top: 25px
+      color: #946100
+      font-size: 14px
+      letter-spacing: -.22px

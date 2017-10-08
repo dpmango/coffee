@@ -48,6 +48,7 @@ $(document).ready(function(){
     // callbacks
     onLeave: function(index, nextIndex, direction){
       // set classes for invisible elements
+      var lastIndex = $('.section').last().index() + 1;
       if ( nextIndex >= 2 ){
         $('.header').addClass('is-half');
         $('.navigation').addClass('is-visible');
@@ -56,6 +57,10 @@ $(document).ready(function(){
         $('.header').removeClass('is-half');
         $('.navigation').removeClass('is-visible')
         $('.controls').removeClass('is-visible');
+      }
+
+      if ( nextIndex == lastIndex ){
+
       }
 
       // custom navigation
@@ -187,6 +192,7 @@ $(document).ready(function(){
   function tabHandler(name){
     var targetNav = $('[js-tab][data-tab-for='+name+']');
     var targetSlide = $('.content-slider__slide[data-tab-for='+name+']');
+    var targetImage = $('.content-image img[data-for='+name+']');
     var targetTab = $('.content__tab[data-tab='+name+']');
 
     if ( targetNav ){
@@ -199,12 +205,76 @@ $(document).ready(function(){
       targetSlide.addClass('is-active');
     }
 
+    if ( targetImage ){
+      targetImage.siblings().removeClass('is-active')
+      targetImage.addClass('is-active');
+    }
+
     if ( targetTab ){
       targetTab.siblings().removeClass('is-active')
       targetTab.addClass('is-active');
     }
 
   }
+
+
+  //////////////
+  // PRODUCTS SECTION
+  /////////////
+  $('[js-offer-trigger]').on('click', function(){
+    $(this).parent().addClass('is-form')
+  });
+
+  $('[js-offer-reset]').on('click', function(){
+    $(this).parent().removeClass('is-form').removeClass('is-ok');
+
+    $(this).closest('.get-offer').find('input').val('')
+  });
+
+  //////////////
+  // CONTACT SECTION
+  /////////////
+
+  // When the window has finished loading create our google map below
+  google.maps.event.addDomListener(window, 'load', init);
+
+  function init() {
+      // Basic options for a simple Google Map
+      // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+      var mapOptions = {
+          // How zoomed in you want the map to start at (always required)
+          zoom: 10,
+
+          // The latitude and longitude to center the map (always required)
+          center: new google.maps.LatLng(55.655826, 37.617300),
+
+          // How you would like to style the map.
+          // This is where you would paste any style found on Snazzy Maps.
+          styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
+      };
+
+      // Get the HTML DOM element that will contain your map
+      // We are using a div with id="map" seen below in the <body>
+      var mapElement = document.getElementById('contact-map');
+
+      // Create the Google Map using our element and options defined above
+      var map = new google.maps.Map(mapElement, mapOptions);
+
+      // Let's also add a marker while we're at it
+      var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(55.546167, 37.575505),
+          map: map,
+          title: 'Snazzy!'
+      });
+  };
+
+  // CONTACT TABS
+  $('.contact-tab__head').on('click', function(){
+    $(this).parent().siblings().removeClass('is-active');
+
+    $(this).parent().toggleClass('is-active');
+  })
+
 
   // HAMBURGER TOGGLER
   $('.hamburger').on('click', function(){

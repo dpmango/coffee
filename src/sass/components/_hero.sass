@@ -1,0 +1,68 @@
+.hero
+  padding-top: 250px
+  min-height: 100vh
+  flex: 1 1 auto
+  display: flex
+  flex-direction: column
+  &__wrapper
+    flex: 1 1 auto
+    display: flex
+  &__slide
+    display: flex
+    flex-direction: column
+    justify-content: center
+    position: relative
+    overflow: hidden
+    width: 8%
+    &.is-active
+      width: 80%
+    &.is-next
+      margin-left: auto
+    &-bg
+      position: absolute
+      z-index: 1
+      top: 50%
+      left: 50%
+      transform: translate3d(-50%,-50%, 0)
+      min-width: 100%
+      min-height: 100%
+      width: auto
+      height: auto
+
+    &-content
+      display: flex
+      flex-direction: column
+      position: relative
+      z-index: 2
+      color: white
+      text-align: center
+
+  &__uptitle
+    font-family: 'Roboto Slab'
+    font-size: 30px
+    font-weight: 700
+    letter-spacing: 6.23px
+    text-shadow: 0 0 10px #000000
+
+  &__title
+    margin-top: 15px
+    font-family: 'Hamline'
+    font-size: 125px
+    font-weight: 700
+    line-height: 1
+    letter-spacing: -.22px
+    text-shadow: 0 0 10px #000000
+
+  &__description
+    margin-top: 15px
+    letter-spacing: -0.17px
+    text-shadow: 0 0 10px #000000
+    line-height: 1.67
+
+  &__cta
+    margin-top: 30px
+
+
++rh(800)
+  .hero
+    padding-top: 190px
