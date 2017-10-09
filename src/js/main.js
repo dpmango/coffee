@@ -7,6 +7,10 @@ $(document).ready(function(){
   var _window = $(window);
   var _document = $(document);
 
+  var media = {
+    tablet: 768
+  }
+
   function isRetinaDisplay() {
     if (window.matchMedia) {
         var mq = window.matchMedia("only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 2.6/2), only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen  and (min-device-pixel-ratio: 1.3), only screen and (min-resolution: 1.3dppx)");
@@ -156,7 +160,7 @@ $(document).ready(function(){
 
   // DISABLE ON MOBILE
   function initFullpage(){
-    if ( _window.width() < 768 ){
+    if ( _window.width() < media.tablet ){
       // $.fn.fullpage.setAutoScrolling(false);
       if ( $('html').is('.fp-enabled') ){
         $.fn.fullpage.destroy('all');
@@ -405,7 +409,66 @@ $(document).ready(function(){
       }
       teleport();
     }
-  })
+  });
+
+  // text hiden plugin
+  $('[js-text-collapse]').each(function(i, el){
+    var self = $(el);
+    var firstParagraph;
+    var hiddenParagraphs = [];
+    var btnEl = $("<div class=content__mobile-more><a href='#' class='btn btn-outline btn-outline--black' js-expand-text> Подробнее </a></div>");
+
+    function collapseCheckMedia(){
+      if ( _window.width() < media.tablet ){
+        self.find('p').each(function(index,p){
+          if ( index == 0 ){
+            firstParagraph = $(p)
+          }
+          if ( index >= 1 ){
+            hiddenParagraphs.push ( $(p) );
+            $(p).hide();
+          }
+          if ( self.find('p').length == index + 1){
+            processHide();
+          }
+        })
+
+        function processHide(){
+          if ( hiddenParagraphs.length > 0 ){
+            // console.log(btnEl, firstParagraph, hiddenParagraphs)
+            btnEl.insertAfter(firstParagraph);
+
+            // click handler - remove btn and expand text
+            btnEl.on('click', function(e){
+              btnEl.remove();
+
+              $.each(hiddenParagraphs, function(i, p){
+                p.fadeIn();
+              })
+
+              hiddenParagraphs = [];
+              e.preventDefault();
+            })
+          }
+        }
+
+      } else {
+        // if media, show all hidden
+        if ( hiddenParagraphs.length > 0 ){
+          btnEl.remove();
+          $.each(hiddenParagraphs, function(i, p){
+            p.show();
+          })
+        }
+      }
+    }
+
+    collapseCheckMedia()
+
+    _window.resized(300, collapseCheckMedia)
+  });
+
+
 
 
 });
