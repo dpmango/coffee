@@ -113,3 +113,71 @@
       padding-right: 40px
     &__up
       left: 35px
+
+
+#mouse
+  .mouse
+    &__shape
+      fill: #212121
+      opacity: .3
+    &__mini
+      fill: #212121
+      opacity: .3
+    &__rect
+      opacity: 0
+      fill: #212121
+      transform-origin: center center
+      animation-fill-mode: both
+      &-1
+        animation: mouseRect1 1s linear infinite
+      &-2
+        animation: mouseRect2 1s .333s linear infinite
+      &-3
+        animation: mouseRect3 1s .666s linear infinite
+
+// white mouse
+.hero__mouse
+  #mouse
+    .mouse
+      &__shape
+        fill: white
+        opacity: .8
+      &__mini
+        fill: white
+        opacity: .8
+      &__rect
+        opacity: 0
+        fill: white
+
+@keyframes mouseRect1
+  from
+    opacity: .1
+    transform: scale(1)
+  50%
+    opacity: .3
+    transform: scale(1.15)
+  to
+    opacity: .1
+    transform: scale(1)
+
+@keyframes mouseRect2
+  from
+    opacity: 0.05
+    transform: scale(1)
+  50%
+    opacity: .3
+    transform: scale(1.05)
+  to
+    opacity: 0.05
+    transform: scale(1)
+
+@keyframes mouseRect3
+  from
+    opacity: 0
+    transform: scale(1)
+  50%
+    opacity: .3
+    transform: scale(1.2)
+  to
+    opacity: 0
+    transform: scale(1)
