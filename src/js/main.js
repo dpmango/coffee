@@ -158,7 +158,18 @@ $(document).ready(function(){
   function initFullpage(){
     if ( _window.width() < 768 ){
       // $.fn.fullpage.setAutoScrolling(false);
-      $.fn.fullpage.destroy('all');
+      if ( $('html').is('.fp-enabled') ){
+        $.fn.fullpage.destroy('all');
+      }
+
+      // change data scr
+      $('img').each(function(i, image){
+        if ( $(image).attr('data-src') ){
+          $(image).attr({
+            src: $(image).attr('data-src')
+          }).removeAttr('data-src');
+        }
+      })
     } else {
       // $.fn.fullpage.setAutoScrolling(true);
       if ( !$('html').is('.fp-enabled') ){
@@ -185,6 +196,18 @@ $(document).ready(function(){
       }
 
       var targetSection = $('.section[data-section='+targetName+']')
+
+      // mobile navigation
+      if ( !$('html').is('.fp-enabled') ){
+        $('body, html').animate({
+            scrollTop: targetSection.offset().top}, 1000);
+
+        $('[js-toggle-mobile-menu]').removeClass('is-active');
+        $('.header').removeClass('is-fixed')
+        $('.mobile-menu').removeClass('is-active');
+
+        return false;
+      }
 
       if (targetSection){
         $.fn.fullpage.moveTo( targetSection.first().index() + 1 );
@@ -345,6 +368,7 @@ $(document).ready(function(){
   // HAMBURGER TOGGLER
   $('[js-toggle-mobile-menu]').on('click', function(){
     $(this).toggleClass('is-active');
+    $('.header').toggleClass('is-fixed')
     $('.mobile-menu').toggleClass('is-active');
   });
 

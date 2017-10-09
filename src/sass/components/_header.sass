@@ -1,7 +1,7 @@
 // HEADER
 .header
   position: absolute
-  z-index: 10
+  z-index: 21
   top: 0
   left: 0
   width: 100%
@@ -10,6 +10,14 @@
   transition: all $transitionSpeed $ease
   &__hamburger
     display: none
+    justify-content: center
+    align-items: center
+    position: fixed
+    z-index: 20
+    top: 0
+    left: 0
+    background: white
+    size: 76px
   &__wrapper
     display: flex
     align-items: center
@@ -97,11 +105,12 @@
 
 +r($tablet)
   .header
-    position: fixed
-    z-index: 20
+    // refactor
+    &.is-fixed
+      position: fixed
     &__hamburger
-      flex: 0 0 80px
-      display: inline-block
+      flex: 0 0 76px
+      display: flex
     &__wrapper
       align-items: flex-start
       padding-left: 20px
@@ -109,11 +118,12 @@
     &__logo
       margin-left: auto
       margin-right: auto
+      padding-left: 76px
       font-size: 85px
     &__menu
       display: none
     &__socials
-      flex: 0 0 80px
+      flex: 0 0 76px
       display: flex
       flex-direction: column-reverse
       align-items: center
@@ -129,7 +139,7 @@
 // MOBILE MENU
 .mobile-menu
   position: fixed
-  top: 140px
+  top: 0px
   bottom: 0
   left: 0
   right: 0

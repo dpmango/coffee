@@ -8,7 +8,8 @@ header.header
 
     .header__logo(js-first-section)
       +icon('ico-logo')
-    ul.header__menu(js-header-navigation js-teleport data-teleport-to="mobile-menu" data-teleport-condition='<768')
+    // refactor js teleport - binding issue
+    ul.header__menu(js-header-navigation data-teleport-to="mobile-menu" data-teleport-condition='<768')
       li
         a(href="#about") О компании
       li
@@ -29,4 +30,15 @@ header.header
 .mobile-menu
   .mobile-menu__wrapper
     ul.mobile-menu__menu(js-header-navigation data-teleport-target="mobile-menu")
-      
+      li
+        a(href="#about") О компании
+      li
+        a(href="#roasting") Обжарка кофе
+      li
+        a(href="#service") Сервис
+      li
+        a(href="#products") Продукция 
+      //- li
+      //-   a(href="#") Блог
+      li
+        a(href="#contacts") Контакты
