@@ -57,6 +57,13 @@
       top: 300px
     &::after
       bottom: 120px
+  &--blog
+    padding-left: 0
+    padding-top: 450px
+
+
+  &--page
+    padding-top: 380px
 
   &-image
     flex: 1 1 auto
@@ -85,6 +92,9 @@
     &--m-left
       img:not(.content-image__wood)
         left: calc(50% + 15%)
+    &--no-grow
+      flex: 0 0 auto
+      height: 700px
 
     &__wood
       position: absolute
@@ -92,6 +102,7 @@
       bottom: 0
       right: 0
       width: 15%
+      max-width: 120px
       z-index: 10
 
   &-slider
@@ -162,6 +173,8 @@
     font-size: 40px
     letter-spacing: 7px
     font-family: 'Roboto Slab', sans-serif
+    &--static
+      position: static
 
   &__text
     position: relative
@@ -178,6 +191,9 @@
     &--tabs
       display: flex
       max-width: 900px
+    &--noscroll
+      padding-top: 0
+      padding-bottom: 0
 
   &__h3
     font-weight: 700
@@ -259,6 +275,11 @@
         top: 150px
       &::after
         bottom: -30px
+    &--blog
+      padding-top: 300px
+      padding-left: 0
+    &--page
+      padding-top: 300px
     &__title
       top: 240px
 
@@ -275,6 +296,14 @@
         top: 100px
       &::after
         bottom: -30px
+    &--blog
+      padding-top: 300px
+      padding-left: 0
+    &--page
+      padding-top: 300px
+    // &-image
+    //   &__wood
+    //     display: none
     &__title
       top: 220px
       font-size: 30px
@@ -286,6 +315,8 @@
       padding-top: 70px
       p
         font-size: 10px
+      &--noscroll
+        padding-top: 0
 
 +r($tablet)
   .content
@@ -302,6 +333,10 @@
       overflow-y: hidden
       &::before, &::after
         display: none
+    &--blog
+      padding-top: 40px
+    &--page
+      padding-top: 40px
     &-image, &-slider, &-map
       flex: 0 0 auto
       height: 375px

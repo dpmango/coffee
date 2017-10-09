@@ -48,7 +48,7 @@ $(document).ready(function(){
   		// scrollOverflowReset: true,
   		// scrollOverflowOptions: null,
 
-      normalScrollElements: '.content',
+      normalScrollElements: '.content--scrollable',
 
       // callbacks
       onLeave: function(index, nextIndex, direction){
@@ -368,6 +368,27 @@ $(document).ready(function(){
   // });
 
 
+  //////////////
+  // BLOG SECTION
+  /////////////
+
+  // slider
+  var slickBlog = $('[js-slick-blog]').slick({
+    accesability: false,
+    variableWidth: true,
+    // centerMode: true,
+    infinite: false,
+    dots: false,
+    arrows: false
+  })
+
+  $('[js-slick-next]').on('click', function(){
+    slickBlog.slick('slickNext')
+  })
+
+  $('[js-slick-prev]').on('click', function(){
+    slickBlog.slick('slickPrev')
+  })
 
   // HAMBURGER TOGGLER
   $('[js-toggle-mobile-menu]').on('click', function(){

@@ -228,7 +228,85 @@ block content
           .content-image
             img(data-src='img/slideBgProduction.jpg' data-srcset='img/slideBgProduction@2x.jpg 2x')
                             
+  
+    //////////
+    // BLOG
+    //////////
+    
+    // SECTION
+    .section(data-section="blog" data-anchor="blog")
+      .content.content--blog
+        .content__title Блог
+        // blog grid
+        .blog-grid(js-slick-blog)
+          .blog-card
+          // card
+          a(href="blog-page.html" target="_blank").blog-card
+            .blog-card__image
+              img(src='img/blogCard1.jpg' srcset='img/blogCard1@2x.jpg 2x')
+            .blog-card__content
+              .blog-card__title Будущее бариста.  Куда и как расти в сфере кофе?
+              .blog-card__short Я начала готовить кофе в 1996 году, это была моя первая работа. Случайность, которая стала судьбой. Я закончила школу и через месяц…
+              .blog-card__bottom
+                .blog-card__date 4 Октября 2017 Г.
+                .blog-card__more
+                  +icon('ico-btn-next')
+          // card
+          a(href="blog-page.html" target="_blank").blog-card
+            .blog-card__image
+              img(src='img/blogCard2.jpg' srcset='img/blogCard2@2x.jpg 2x')
+            .blog-card__content
+              .blog-card__title Moscow Coffee and Tea Expo:  к чему готовиться в 2017 году
+              .blog-card__short PIR EXPO — огромное событие в HoReCa. Пять лет в рамках выставки проходит одно из крупнейших событий мира кофе:…
+              .blog-card__bottom
+                .blog-card__date 27 Сентября 2017 Г.
+                .blog-card__more
+                  +icon('ico-btn-next')
+          // card
+          a(href="blog-page.html" target="_blank").blog-card
+            .blog-card__image
+              img(src='img/blogCard3.jpg' srcset='img/blogCard3@2x.jpg 2x')
+            .blog-card__content
+              .blog-card__title Cила — в булках
+              .blog-card__short Маленькая Пекарня Журавлевых. Формат небольших розничных точек для продажи свежей выпечки и десертов придумала…
+              .blog-card__bottom
+                .blog-card__date 4 Октября 2017 Г.
+                .blog-card__more
+                  +icon('ico-btn-next')
+          // card
+          a(href="blog-page.html" target="_blank").blog-card
+            .blog-card__image
+              img(src='img/blogCard4.jpg' srcset='img/blogCard4@2x.jpg 2x')
+            .blog-card__content
+              .blog-card__title Команда La Marzocco Russia  о новинках 2017 года, счастье  и ответственности обладания кофемашинами бренда  с 90-летней историей
+
+              .blog-card__bottom
+                .blog-card__date 20 Сентября 2017 Г.
+                .blog-card__more
+                  +icon('ico-btn-next')
                   
+          // card
+          a(href="blog-page.html" target="_blank").blog-card
+            .blog-card__image
+              img(src='img/blogCard5.jpg' srcset='img/blogCard5@2x.jpg 2x')
+            .blog-card__content
+              .blog-card__title Сергей Степанчук о поездке  в Бразилию, подготовке  к чемпионату мира и новом ростере
+
+              .blog-card__bottom
+                .blog-card__date 20 Сентября 2017 Г.
+                .blog-card__more
+                  +icon('ico-btn-next')
+                  
+        .blog-navigation
+        
+        .blog-nav.blog-nav--prev
+          .blog-card__more.blog-card__more--reverse(js-slick-prev)
+            +icon('ico-btn-next')
+        .blog-nav
+          .blog-card__more(js-slick-next)
+            +icon('ico-btn-next')
+
+              
     //////////
     // CONTACTS
     //////////

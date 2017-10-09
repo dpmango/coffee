@@ -2,6 +2,6 @@ ProjectTitle: Lab-coffee
 
 PageList:
 - file: homepage.html
-  ready: 75
+  ready: 80
 - file: blog-page.html
-  ready: 0
+  ready: 50

@@ -1,0 +1,179 @@
+.blog-grid
+  flex: 1 1 auto
+  display: flex
+  .slick-track
+    display: flex
+  .slick-list
+    &::before, &::after
+      display: inline-block
+      content: ' '
+      position: absolute
+      top: 0
+      bottom: 0
+      z-index: 3
+      background: rgba(white, .7)
+      width: 20%
+      filter: blur(10px)
+    &::before
+      left: -10%
+    &::after
+      right: -10%
+
+.blog-navigation
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  z-index: 5
+  background: url('../img/heroBgWood.jpg') no-repeat center
+  background-size: cover
+  width: 120px
+
+.blog-nav
+  position: absolute
+  top: calc(50% + 120px)
+  transform: translateY(-50%)
+  right: 50px
+  z-index: 6
+  &--prev
+    right: auto
+    left: 50px
+  .blog-card__more
+    background: #FFFFFF
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.50)
+    border-color: transparent
+    &:hover
+      border-color: $colorAcent
+      background: $colorAcent
+      color: white
+
++r($wide)
+  .blog-nav
+    right: 30px
+    &--prev
+      right: auto
+  .blog-navigation
+    width: 90px
+
+.blog-card
+  flex: 0 0 280px
+  width: 280px
+  display: flex !important
+  flex-direction: column
+  background: #FFFFFF
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.14)
+  border-radius: 5px
+  margin-right: 50px
+  cursor: pointer
+  &:first-child
+    flex-basis: 120px
+    width: 120px
+  &__image
+    height: 200px
+    position: relative
+    overflow: hidden
+    z-index: 1
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate3d(-50%,-50%,0)
+      min-width: 100%
+      min-height: 100%
+      width: auto
+      height: auto
+      transition: transform $transitionSpeed $ease
+  &__content
+    flex: 0 0 auto
+    display: flex
+    flex-direction: column
+    padding: 15px 25px 20px 25px
+
+  &__title
+    font-family: 'Roboto Slab', sans-serif
+    font-size: 14px
+    letter-spacing: -0.17px
+
+  &__short
+    font-size: 10px
+    line-height: 1.9
+    margin: 15px 0
+
+  &__bottom
+    margin-top: auto
+    display: -webkit-flex
+    display: -ms-flex
+    display: flex
+    align-items: center
+
+  &__date
+    font-size: 12px
+    letter-spacing: -0.27px
+
+  &__more
+    -webkit-apperance: none
+    display: flex
+    justify-content: center
+    align-items: center
+    padding-left: 2px
+    background: transparent
+    border-radius: 50%
+    size: 33px
+    margin-left: auto
+    font-size: 15px
+    color: $colorHover
+    border: 1px solid $colorHover
+    cursor: pointer
+    transition: all $transitionSpeed $ease
+    &--reverse
+      padding-left: 0
+      padding-right: 2px
+      svg
+        transform: rotate(180deg)
+
+  &:hover
+    .blog-card__image
+      img
+        transform: translate3d(-50%,-50%,0) scale(1.1)
+    .blog-card__more
+      border-color: $colorAcent
+      background: $colorAcent
+      color: white
+
+// GOES FOR BLOGPAGE
+
+.blog-title
+  font-family: 'Roboto Slab', sans-serif
+  font-size: 18px
+  line-height: 1.33
+  margin-bottom: 15px
+
+.blog-date
+  font-size: 12px
+  margin-bottom: 40px
+
+
+.blog-container
+  max-width: 1020px
+  padding: 100px 20px
+  margin-left: auto
+  margin-right: auto
+
+  p
+    max-width: 700px
+    margin-left: auto
+    margin-right: auto
+    font-size: 12px
+    letter-spacing: -.22px
+    line-height: 1.9
+
+  figure
+    margin: 25px 0 40px 0
+    img
+      max-width: 100%
+    figcaption
+      text-align: right
+      font-size: 12px
+      line-height: 2
+      font-weight: 300
+      font-style: italic
