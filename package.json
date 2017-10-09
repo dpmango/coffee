@@ -11,7 +11,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "surge --project ./dist --domain khmelevskoy.surge.sh"
+      "pre-push": "surge --project ./dist --domain coffee-lab.surge.sh"
     }
   },
   "author": "Sergey Khmelevskoy <sergey@khmelevskoy.co>",

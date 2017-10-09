@@ -1,9 +1,14 @@
 // HEADER :: START
 header.header
   .header__wrapper
+    .header__hamburger
+      .hamburger.hamburger--collapse(js-toggle-mobile-menu)
+        span.hamburger-box
+          span.hamburger-inner
+
     .header__logo(js-first-section)
       +icon('ico-logo')
-    ul.header__menu(js-header-navigation)
+    ul.header__menu(js-header-navigation js-teleport data-teleport-to="mobile-menu" data-teleport-condition='<768')
       li
         a(href="#about") О компании
       li
@@ -20,3 +25,8 @@ header.header
       a(href='#' target="_blank") IN
       a(href='#' target="_blank") FB
         
+
+.mobile-menu
+  .mobile-menu__wrapper
+    ul.mobile-menu__menu(js-header-navigation data-teleport-target="mobile-menu")
+      

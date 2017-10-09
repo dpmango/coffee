@@ -37,59 +37,61 @@ $(document).ready(function(){
   // FULLPAGE
   ///////////
 
-  $('[js-fullpage]').fullpage({
-    // options
-    // scrollOverflow: true,
-		// scrollOverflowReset: true,
-		// scrollOverflowOptions: null,
+  function startFullpage(){
+    $('[js-fullpage]').fullpage({
+      // options
+      // scrollOverflow: true,
+  		// scrollOverflowReset: true,
+  		// scrollOverflowOptions: null,
 
-    normalScrollElements: '.content',
+      normalScrollElements: '.content',
 
-    // callbacks
-    onLeave: function(index, nextIndex, direction){
-      // set classes for invisible elements
-      var lastIndex = $('.section').last().index() + 1;
-      if ( nextIndex >= 2 ){
-        $('.header').addClass('is-half');
-        $('.navigation').addClass('is-visible');
-        $('.controls').addClass('is-visible');
+      // callbacks
+      onLeave: function(index, nextIndex, direction){
+        // set classes for invisible elements
+        var lastIndex = $('.section').last().index() + 1;
+        if ( nextIndex >= 2 ){
+          $('.header').addClass('is-half');
+          $('.navigation').addClass('is-visible');
+          $('.controls').addClass('is-visible');
 
-        if ( nextIndex == lastIndex ){
-          $('.controls').addClass('is-last');
+          if ( nextIndex == lastIndex ){
+            $('.controls').addClass('is-last');
+          } else {
+            $('.controls').removeClass('is-last');
+          }
+
         } else {
-          $('.controls').removeClass('is-last');
+          // reset to hero
+          $('.header').removeClass('is-half');
+          $('.navigation').removeClass('is-visible')
+          $('.controls').removeClass('is-visible');
         }
 
-      } else {
-        // reset to hero
-        $('.header').removeClass('is-half');
-        $('.navigation').removeClass('is-visible')
-        $('.controls').removeClass('is-visible');
+        // custom navigation
+        $('.section').each(function(i, section){
+          var sectionIndex = i + 1
+          if ( sectionIndex == nextIndex ){
+            var currentSection = $(section).data('section');
+
+            setHeaderNav(currentSection);
+            setNavProximity(currentSection);
+          }
+        });
+
+        // increment progress
+        var totalIndex = $('.section').length
+        var incrementProgress = 70 - (30 / $('.section').length) * nextIndex
+
+        $('.controls__progress').css({
+          'transform': 'translate3d('+incrementProgress+'%,0,0)'
+        });
       }
-
-      // custom navigation
-      $('.section').each(function(i, section){
-        var sectionIndex = i + 1
-        if ( sectionIndex == nextIndex ){
-          var currentSection = $(section).data('section');
-
-          setHeaderNav(currentSection);
-          setNavProximity(currentSection);
-        }
-      });
-
-      // increment progress
-      var totalIndex = $('.section').length
-      var incrementProgress = 70 - (30 / $('.section').length) * nextIndex
-
-      $('.controls__progress').css({
-        'transform': 'translate3d('+incrementProgress+'%,0,0)'
-      });
-    }
-  });
+    });
+  }
 
   function setHeaderNav(curSection){
-    $('.header__menu li').each(function(i,val){
+    $('[js-header-navigation] li').each(function(i,val){
       if ( $(val).find('a').attr('href').substring(1) == curSection ){
         $(val).addClass('is-active');
       } else {
@@ -151,6 +153,24 @@ $(document).ready(function(){
 
     });
   }
+
+  // DISABLE ON MOBILE
+  function initFullpage(){
+    if ( _window.width() < 768 ){
+      // $.fn.fullpage.setAutoScrolling(false);
+      $.fn.fullpage.destroy('all');
+    } else {
+      // $.fn.fullpage.setAutoScrolling(true);
+      if ( !$('html').is('.fp-enabled') ){
+        startFullpage();
+      }
+      // $.fn.fullpage.reBuild();
+    }
+  }
+
+  initFullpage();
+
+  _window.resized(100, initFullpage)
 
   // HEADER NAVIGATION
   $('[js-header-navigation] a, [js-navigation] > div').each(function(i,nav){
@@ -293,39 +313,75 @@ $(document).ready(function(){
   });
 
   // ANIMATIONS
-  $('.wow').each(function(i, el){
-    var elWatcher = scrollMonitor.create( $(el) );
+  // scroll events and viewport won't be triggered with fullpage.js
 
-    var delay;
-    var animationName = "wowFade";
-    if ( $(window).width() < 768 ){
-      delay = 0
-    } else {
-      $(el).data('wow-delay');
-    }
-
-    elWatcher.enterViewport(function() {
-      $(el).css({
-        'animation-name': animationName,
-        'animation-delay': delay
-      });
-    });
-    elWatcher.exitViewport(function() {
-      $(el).css({
-        'animation-name': 'none',
-        'animation-delay': 0
-      });
-    });
-  });
+  // $('.wow').each(function(i, el){
+  //   var elWatcher = scrollMonitor.create( $(el) );
+  //
+  //   var delay;
+  //   var animationName = "wowFade";
+  //   if ( $(window).width() < 768 ){
+  //     delay = 0
+  //   } else {
+  //     $(el).data('wow-delay');
+  //   }
+  //
+  //   elWatcher.enterViewport(function() {
+  //     $(el).css({
+  //       'animation-name': animationName,
+  //       'animation-delay': delay
+  //     });
+  //   });
+  //   elWatcher.exitViewport(function() {
+  //     $(el).css({
+  //       'animation-name': 'none',
+  //       'animation-delay': 0
+  //     });
+  //   });
+  // });
 
 
 
   // HAMBURGER TOGGLER
-  $('.hamburger').on('click', function(){
-    $('.hamburger').toggleClass('active');
-    $('.mobile-navi').toggleClass('active');
+  $('[js-toggle-mobile-menu]').on('click', function(){
+    $(this).toggleClass('is-active');
+    $('.mobile-menu').toggleClass('is-active');
   });
 
+
+  // TELEPORT PLUGIN
+  $('[js-teleport]').each(function (i, val) {
+    var self = $(val)
+    var objHtml = $(val).html();
+    var target = $('[data-teleport-target=' + $(val).data('teleport-to') + ']');
+    var conditionMedia = $(val).data('teleport-condition').substring(1);
+    var conditionPosition = $(val).data('teleport-condition').substring(0, 1);
+
+    if (target && objHtml && conditionPosition) {
+      _window.resized(100, function () {
+        teleport()
+      })
+
+      function teleport() {
+        var condition;
+
+        if (conditionPosition === "<") {
+          condition = _window.width() < conditionMedia;
+        } else if (conditionPosition === ">") {
+          condition = _window.width() > conditionMedia;
+        }
+
+        if (condition) {
+          target.html(objHtml)
+          self.html('')
+        } else {
+          self.html(objHtml)
+          target.html("")
+        }
+      }
+      teleport();
+    }
+  })
 
 
 });

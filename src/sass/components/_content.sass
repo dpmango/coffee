@@ -15,6 +15,17 @@
     &__col
       &:nth-child(2)
         padding-top: 150px
+
++r($tablet)
+  .grid
+    flex-direction: column-reverse
+    &__col
+      flex: 0 0 auto
+      width: 100%
+      overflow-x: hidden
+      &:nth-child(2)
+        padding-top: 0
+
 .content
   flex: 1 1 auto
   display: flex
@@ -276,6 +287,35 @@
       p
         font-size: 10px
 
++r($tablet)
+  .content
+    padding-left: 20px
+    padding-right: 20px
+    max-width: 520px
+    margin-left: auto
+    margin-right: auto
+    &--scrollable
+      margin-top: 45px
+      margin-bottom: 50px
+      max-height: 10000px
+      height: auto
+      overflow-y: hidden
+      &::before, &::after
+        display: none
+    &-image, &-slider, &-map
+      flex: 0 0 auto
+      height: 375px
+    &-image
+      // img:not(.content-image__wood)
+      //   position: static
+    &__title
+      position: static
+      padding-left: 0
+      margin-bottom: 30px
+    &__text
+      padding-top: 0
+      padding-bottom: 0
+      max-width: 100%
 
 .contact-tab
   &__head
