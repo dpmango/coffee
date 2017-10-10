@@ -232,9 +232,9 @@ $(document).ready(function(){
   /////////////
 
   $('.content-slider__slide').on('click', function(){
-
-    if ( $(this).data('tab-for') ){
-      tabHandler( $(this).data('tab-for') );
+    console.log($(this).data('for-tab'))
+    if ( $(this).data('for-tab') ){
+      tabHandler( $(this).data('for-tab') );
     } else {
       $(this).siblings().removeClass('is-active');
       $(this).addClass('is-active');
@@ -249,7 +249,7 @@ $(document).ready(function(){
 
   function tabHandler(name){
     var targetNav = $('[js-tab][data-tab-for='+name+']');
-    var targetSlide = $('.content-slider__slide[data-tab-for='+name+']');
+    var targetSlide = $('.content-slider__slide[data-for-tab='+name+']');
     var targetImage = $('.content-image img[data-for='+name+']');
     var targetTab = $('.content__tab[data-tab='+name+']');
 
