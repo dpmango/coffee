@@ -56,7 +56,6 @@ $(document).ready(function(){
         var lastIndex = $('.section').last().index() + 1;
         if ( nextIndex >= 2 ){
           $('.header').addClass('is-half');
-          $('.navigation').addClass('is-visible');
           $('.controls').addClass('is-visible');
 
           if ( nextIndex == lastIndex ){
@@ -68,7 +67,6 @@ $(document).ready(function(){
         } else {
           // reset to hero
           $('.header').removeClass('is-half');
-          $('.navigation').removeClass('is-visible')
           $('.controls').removeClass('is-visible');
         }
 
@@ -77,9 +75,10 @@ $(document).ready(function(){
           var sectionIndex = i + 1
           if ( sectionIndex == nextIndex ){
             var currentSection = $(section).data('section');
+            var currentAnchor = $(section).data('anchor');
 
             setHeaderNav(currentSection);
-            setNavProximity(currentSection);
+            setNavProximity(currentSection, currentAnchor);
           }
         });
 
@@ -104,18 +103,19 @@ $(document).ready(function(){
     });
   }
 
-  function setNavProximity(curSection){
-    $('.navigation__el').each(function(i, nav){
-      if ( $(nav).data('ask-for') == curSection ){
+  function setNavProximity(curSection, currentAnchor){
+    // show block with current section navigation
+    $('[js-navigation]').removeClass('is-visible');
+    $('[js-navigation][data-for='+curSection+']').addClass('is-visible');
 
-        if ( $(nav).attr('data-proximity') == 1 ){
-          // nothing changed - already current
-        } else {
-          $(nav).attr('data-proximity', 1);
-          var curNavIndex = $(nav).index() + 1;
-          updateNavSiblings(curNavIndex);
-        }
+    $('.navigation__el').each(function(i, nav){
+
+      if ( $(nav).data('ask-for') == currentAnchor ){
+        $(nav).attr('data-proximity', 1);
+        var curNavIndex = $(nav).index() + 1;
+        updateNavSiblings(curNavIndex);
       }
+
     });
   }
 
@@ -137,9 +137,6 @@ $(document).ready(function(){
         if ( activeEl.prev().prev().prev() ){
           activeEl.prev().prev().prev().attr('data-proximity', 4 );
         }
-        if ( activeEl.prev().prev().prev().prev() ){
-          activeEl.prev().prev().prev().prev().attr('data-proximity', 5 );
-        }
 
         if ( activeEl.next() ){
           activeEl.next().attr('data-proximity', 2 );
@@ -149,9 +146,6 @@ $(document).ready(function(){
         }
         if ( activeEl.next().next().next() ){
           activeEl.next().next().next().attr('data-proximity', 4 );
-        }
-        if ( activeEl.next().next().next().next() ){
-          activeEl.next().next().next().next().attr('data-proximity', 5 );
         }
       }
 
@@ -188,7 +182,7 @@ $(document).ready(function(){
   _window.resized(100, initFullpage)
 
   // HEADER NAVIGATION
-  $('[js-header-navigation] a, [js-navigation] > div').each(function(i,nav){
+  $('[js-header-navigation] a').each(function(i,nav){
     var self = $(nav);
 
     self.on('click', function(e){

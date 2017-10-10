@@ -403,10 +403,14 @@ block content
       
 
   // DOTS NAVIGATION
-  .navigation(js-navigation)
-    .navigation__el(data-proximity="1" data-ask-for="about")
-    .navigation__el(data-proximity="2" data-ask-for="roasting")
-    .navigation__el(data-proximity="3" data-ask-for="service")
-    .navigation__el(data-proximity="4" data-ask-for="products")
-    .navigation__el(data-proximity="5" data-ask-for="contacts")    
+  .navigation(js-navigation data-for="about")
+    .navigation__el(data-proximity="1" data-ask-for="about1")
+    .navigation__el(data-proximity="2" data-ask-for="about2")
+    .navigation__el(data-proximity="3" data-ask-for="about3")
+    .navigation__el(data-proximity="4" data-ask-for="about4")
+
+  .navigation(js-navigation data-for="roasting")
+    .navigation__el(data-proximity="1" data-ask-for="roasting1")
+    .navigation__el(data-proximity="2" data-ask-for="roasting2")
+    .navigation__el(data-proximity="3" data-ask-for="roasting3")
   
