@@ -19,7 +19,7 @@
     &::after
       right: -10%
 
-.blog-navigation
+.blog-bg
   position: absolute
   top: 0
   bottom: 0
@@ -28,6 +28,10 @@
   background: url('../img/heroBgWood.jpg') no-repeat center
   background-size: cover
   width: 120px
+
++r($tablet)
+  .blog-bg
+    display: none
 
 .blog-nav
   position: absolute
@@ -139,6 +143,17 @@
       border-color: $colorAcent
       background: $colorAcent
       color: white
+
++r($tablet)
+  .blog-grid
+    padding-bottom: 50px
+  .blog-nav
+    top: 50%
+    
+  .blog-card
+    &:first-child
+      display: none
+
 
 // GOES FOR BLOGPAGE
 

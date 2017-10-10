@@ -21,7 +21,7 @@
   &__wrapper
     display: flex
     align-items: center
-    padding: 60px 90px 100px 120px
+    padding: 60px 95px 100px 120px
     transition: all $transitionSpeed $ease
   &__logo
     flex: 0 0 auto
@@ -88,6 +88,11 @@
       padding-top: 30px
       padding-bottom: 50px
 
++r(1440)
+  .header
+    &__wrapper
+      padding-right: 40px
+
 +r($wide)
   .header
     &__wrapper
@@ -116,6 +121,10 @@
     // refactor
     &.is-fixed
       position: fixed
+      .header__socials
+        opacity: 0
+        pointer-events: none
+
     &__hamburger
       flex: 0 0 76px
       display: flex
@@ -143,6 +152,10 @@
         margin-bottom: 0px
         &:last-child
           margin-bottom: 12px
+
++rmin($tablet)
+  .mobile-menu
+    display: none !important
 
 // MOBILE MENU
 .mobile-menu
@@ -195,3 +208,14 @@
       &.is-active
         a
           font-weight: 700
+
+  .header__socials
+    flex-direction: row
+    justify-content: center
+    transform: translateX(0px)
+    a
+      margin-right: 25px
+      margin-bottom: 0px
+      &:last-child
+        margin-bottom: 0px
+        margin-right: 0

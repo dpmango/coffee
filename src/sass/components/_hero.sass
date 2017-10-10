@@ -12,13 +12,15 @@
     display: flex
     flex-direction: column
     justify-content: center
+    align-items: flex-start
+    padding-left: 120px
     position: relative
     overflow: hidden
-    width: 8%
     &.is-active
-      width: 80%
+      flex: 1 1 auto
     &.is-next
-      margin-left: auto
+      width: 120px
+      margin-left: 11%
     &-bg
       position: absolute
       z-index: 1
@@ -33,6 +35,7 @@
     &-content
       display: flex
       flex-direction: column
+      margin-left: 15%
       position: relative
       z-index: 2
       color: white
@@ -74,6 +77,26 @@
       max-height: 68px
       transform-origin: bottom center
 
+  &__socials
+    display: none
+    position: absolute
+    bottom: 30px
+    width: 200px
+    right: 90px
+    font-family: 'Roboto Slab', sans-serif
+    font-size: 18px
+    font-weight: 700
+    text-align: center
+    a
+      display: inline-block
+      padding: 5px
+      margin-right: 25px
+      transition: all $transitionSpeed $ease
+      &:last-child
+        margin-right: 0
+      &:hover
+        color: $colorHover
+
 
 +rh(800)
   .hero
@@ -85,13 +108,25 @@
 +r($wide)
   .hero
     padding-top: 150px
+    &__slide
+      padding-left: 0px
+      &.is-next
+        width: 90px
+        margin-left: 200px
+    &__socials
+      display: block
 
 +r($tablet)
   .hero
     &__slide
+      align-items: stretch
+      &-content
+        margin-left: 0
       &.is-active
         width: 100%
       &.is-next
         display: none
     &__mouse
+      display: none
+    &__socials
       display: none
