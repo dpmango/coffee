@@ -232,7 +232,6 @@ $(document).ready(function(){
   /////////////
 
   $('.content-slider__slide').on('click', function(){
-    console.log($(this).data('for-tab'))
     if ( $(this).data('for-tab') ){
       tabHandler( $(this).data('for-tab') );
     } else {
@@ -282,8 +281,6 @@ $(document).ready(function(){
 
       if ( linkedEl ){
         var linkedElOffset = linkedEl.position().top - parseInt(linkedEl.closest('.content__text').css('padding-top'),10) + linkedEl.height()
-
-        console.log(linkedElOffset)
 
         $(tab).css({
           'padding-top': linkedElOffset - 10

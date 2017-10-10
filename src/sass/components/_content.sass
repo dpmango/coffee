@@ -191,7 +191,10 @@
       line-height: 1.9
     &--tabs
       display: flex
-      max-width: 900px
+      .content__tab
+        margin-right: -100%
+        flex: 0 0 400px
+        padding-left: 30px
     &--noscroll
       padding-top: 0
       padding-bottom: 0
@@ -244,13 +247,13 @@
       transition: all $transitionSpeed $ease
     &::after
       top: 50%
-      right: -1000px
+      right: -1040px
       width: 1000px
       transform: translateY(-50%)
       height: 1px
     &::before
       top: 50%
-      right: 20px
+      right: -20px
       transform: translateY(-50%)
       size: 4px
       border-radius: 50%
