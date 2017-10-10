@@ -275,6 +275,27 @@ $(document).ready(function(){
 
   }
 
+  // tab padding tab
+  function setDynamicTabs(){
+    $('[js-dymamic-tab-pad]').each(function(i, tab){
+      var linkedEl = $('.content__tab-el[data-tab-for='+ $(tab).data('tab') +']');
+
+      if ( linkedEl ){
+        var linkedElOffset = linkedEl.position().top - parseInt(linkedEl.closest('.content__text').css('padding-top'),10) + linkedEl.height()
+
+        console.log(linkedElOffset)
+
+        $(tab).css({
+          'padding-top': linkedElOffset - 10
+        })
+      }
+    })
+  }
+
+  setDynamicTabs();
+
+  _window.resized(500, setDynamicTabs)
+
 
   //////////////
   // PRODUCTS SECTION
