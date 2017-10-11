@@ -57,6 +57,12 @@
       top: 300px
     &::after
       bottom: 120px
+    &--long
+      overflow-y: hidden
+      margin-bottom: 100px
+      max-height: calc(100vh - 550px)
+      &::after
+        display: none
   &--blog
     padding-left: 0
     padding-top: 450px
@@ -118,13 +124,6 @@
       width: 16.6%
       cursor: pointer
       transition: all $transitionSpeed $ease
-      &::before
-        display: block
-        content: ' '
-        position: absolute 0
-        z-index: 2
-        background: rgba(white, .5)
-        transition: all $transitionSpeed $ease
       img
         position: absolute
         z-index: 1
@@ -135,10 +134,15 @@
         min-height: 100%
         width: auto
         height: auto
+        opacity: .2
+        transition: opacity $transitionSpeed $ease
       &.is-active
         width: 50%
-        &::before
-          opacity: 0
+        img
+          opacity: 1
+      &.is-mobile
+        display: none
+
   &-map
     flex: 1 1 auto
     display: flex
@@ -355,9 +359,28 @@
       padding-right: 0
     &--page
       padding-top: 40px
-    &-image, &-slider, &-map
+    &-image, &-map
       flex: 0 0 auto
       height: 375px
+    &-slider
+      flex: 0 0 auto
+      height: 0
+      display: none
+      &__slide
+        margin-left: -25px
+        width: calc(90% + 25px)
+        img
+          opacity: 1
+          position: static
+          transform: none
+          transition: none
+          min-width: auto
+          min-height: auto
+          width: 100%
+        &.is-mobile
+          display: block
+
+
     &-image
       // img:not(.content-image__wood)
       //   position: static
@@ -369,6 +392,15 @@
       padding-top: 0
       padding-bottom: 0
       max-width: 100%
+      &--tabs
+        .content__tab
+          flex: 0 0 auto
+          margin-right: 0
+          padding-left: 0
+    &__tab
+      display: block
+      padding-right: 0
+      padding-right: 0
 
 
     &__mobile-more
@@ -386,13 +418,19 @@
       flex: 0 0 auto
 
     &__tab-el
-      &::before, &::after
+      display: inline-block
+      font-size: 12px
+      letter-spacing: -0.15px
+      margin-bottom: 30px
+      color: $colorAcent
+      &::after
         display: none
 
     &__tab
       flex: 0 0 auto
       padding-top: 0
       margin-top: 30px
+      margin-bottom: 40px
 
 .contact-tab
   &__head
@@ -439,3 +477,5 @@
         transform: translate3d(0,0,0)
     .contact-tab__content
       display: block
+
++r($tablet)

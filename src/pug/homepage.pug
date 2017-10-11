@@ -56,16 +56,24 @@ block content
     .section(data-section="about" data-anchor="about3")
       .grid
         .grid__col
-          .content.content--scrollable
+          .content.content--scrollable.content--scrollable--long
             .content__title Особенности 
             // tabs is modifier for full-page tabs
             .content__text.content__text--tabs
               .content__tab-nav
                 .content__tab-el(js-tab data-tab-for="about_1").is-active Профессиональная команда
+                .content-slider__slide.is-mobile
+                  img(data-src='img/slideBgAbout1Mobile.jpg' data-srcset='img/slideBgAbout1Mobile@2x.jpg 2x')
                 .content__tab-el(js-tab data-tab-for="about_2") Строгий отбор оборудования
+                .content-slider__slide.is-mobile
+                  img(data-src='img/slideBgAbout2Mobile.jpg' data-srcset='img/slideBgAbout2Mobile@2x.jpg 2x')
                 .content__tab-el(js-tab data-tab-for="about_3") Уважение к времени
+                .content-slider__slide.is-mobile
+                  img(data-src='img/slideBgAbout3Mobile.jpg' data-srcset='img/slideBgAbout3Mobile@2x.jpg 2x')
                 .content__tab-el(js-tab data-tab-for="about_4") Сопутствующие товары
-              
+                .content-slider__slide.is-mobile
+                  img(data-src='img/slideBgAbout4Mobile.jpg' data-srcset='img/slideBgAbout4Mobile@2x.jpg 2x')
+
               .content__tab(js-dymamic-tab-pad data-tab="about_1").is-active
                 p «Лаборатория кофе» объединяет людей, которых можно назвать лучшими в своём деле. Производством руководит Сергей Степанчук — квалифицированный обжарщик, сертифицированный судья SCAE (Speciality Coffee Association of Europe), многократный финалист и победитель российских и международных чемпионатов по приготовлению кофе.
                 p Все обжарщики «Лаборатории кофе» имеют опыт работы бариста, организовывают и поддерживают события кофейной индустрии, обмениваются опытом с российскими и иностранными коллегами, участвуют в соревнованиях разного уровня.
