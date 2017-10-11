@@ -18,12 +18,16 @@
 
 +r($tablet)
   .grid
+    min-height: auto
     flex-direction: column-reverse
     &__col
       flex: 0 0 auto
       width: 100%
       &:nth-child(2)
         padding-top: 0
+  [data-section="contacts"]
+    .grid
+      flex-direction: column
 
 
 .content
@@ -281,7 +285,19 @@
     margin-bottom: 60px
     margin-left: -35%
     max-width: 135%
+  &.is-mobile
+    display: none
 
++r($tablet)
+  .product-image
+    display: none
+    img
+      margin-left: -25px
+      max-width: calc(100% + 40px)
+      margin-top: 30px
+      margin-bottom: 20px
+    &.is-mobile
+      display: block
 
 +rh(800)
   .content
@@ -318,6 +334,8 @@
     &--blog
       padding-top: 300px
       padding-left: 0
+      .content__title
+        padding-left: 25px
     &--page
       padding-top: 300px
     // &-image
@@ -359,23 +377,37 @@
       padding-right: 0
     &--page
       padding-top: 40px
-    &-image, &-map
+    &-map
       flex: 0 0 auto
       height: 375px
+    &-image
+      flex: 0 0 auto
+      height: auto
+      img:not(.content-image__wood)
+        position: static
+        transform: none
+        min-width: auto
+        min-height: auto
+        max-width: 100%
+        max-height: 100%
+
+      &--hidden-m
+        display: none
     &-slider
       flex: 0 0 auto
       height: 0
       display: none
       &__slide
         margin-left: -25px
-        width: calc(90% + 25px)
+        width: 100%
         img
           opacity: 1
           position: static
           transform: none
           transition: none
-          min-width: auto
+          min-width: 320px
           min-height: auto
+          max-width: 100%
           width: 100%
         &.is-mobile
           display: block
@@ -401,6 +433,8 @@
       display: block
       padding-right: 0
       padding-right: 0
+      &:last-child
+        margin-bottom: 0
 
 
     &__mobile-more
@@ -413,6 +447,12 @@
       flex-direction: column
     &__tabs
       flex-direction: column
+      .content__tab
+        padding-left: 0
+        border-left: 0
+        flex: 0 0 auto
+        .content__h3
+          display: none
 
     &__tab-nav
       flex: 0 0 auto
@@ -432,6 +472,7 @@
       margin-top: 30px
       margin-bottom: 40px
 
+// CONTACT TAB
 .contact-tab
   &__head
     position: relative
@@ -475,7 +516,39 @@
       &::before
         opacity: 1
         transform: translate3d(0,0,0)
+      .ico
+        opacity: 0
+        display: none
     .contact-tab__content
       display: block
 
 +r($tablet)
+  .contact-tab
+    &__head
+      font-size: 12px
+      padding: 15px 0
+      &::before
+        display: none
+    &__content
+      padding-left: 30px
+
+.contact-mailing
+  text-align: center
+  margin: 20px 0 0 0
+  display: none
+  +r($tablet)
+    display: block
+
+
+.mobile-top
+  position: relative
+  display: none
+  background: #212121
+  height: 120px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  color: white
+  +r($tablet)
+    display: flex

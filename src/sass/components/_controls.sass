@@ -116,6 +116,17 @@
     &__up
       left: 35px
 
++r($tablet)
+  .controls
+
+    &__up
+      flex: 1 1 auto
+      position: static
+      opacity: 1
+      pointer-events: all
+      transform: translate3d(0,0px,0)
+
+
 
 #mouse
   .mouse
@@ -167,7 +178,7 @@
     opacity: 0.3
     transform: scale(1)
   50%
-    opacity: .7
+    opacity: 1
     transform: scale(1.05)
   to
     opacity: 0.3
@@ -178,7 +189,7 @@
     opacity: 0.2
     transform: scale(1)
   50%
-    opacity: .8
+    opacity: .7
     transform: scale(1.2)
   to
     opacity: 0.2

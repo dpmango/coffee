@@ -129,9 +129,15 @@ block content
               .content__tabs
                 .content__tab-nav
                   .content__tab-el(js-tab data-tab-for="roasting_1").is-active Giesen W60A
+                  .content-slider__slide.is-mobile
+                    img(data-src='img/slideBgObjarka1Mobile.jpg' data-srcset='img/slideBgObjarka1Mobile@2x.jpg 2x')
                   .content__tab-el(js-tab data-tab-for="roasting_2") Giesen W15A
+                  .content-slider__slide.is-mobile
+                    img(data-src='img/slideBgObjarka2Mobile.jpg' data-srcset='img/slideBgObjarka2Mobile@2x.jpg 2x')
                   .content__tab-el(js-tab data-tab-for="roasting_3") Giesen WPG1
-
+                  .content-slider__slide.is-mobile
+                    img(data-src='img/slideBgObjarka3Mobile.jpg' data-srcset='img/slideBgObjarka3Mobile@2x.jpg 2x')
+                      
                 .content__tab(data-tab="roasting_1").is-active
                   .content__h3 Giesen W60A
                   p Современный ростер промышленной вместительностью 60 кг был запущен в «Лаборатории кофе» летом 2017 года. Он стал первым 60-килограммовым Giesen в России. W60A позволяет обжаривать до 240 килограммов кофе в час. Именно на нём сегодня обжаривается основной объём блендов и моносортов под эспрессо. 
@@ -143,7 +149,7 @@ block content
                   p Маленький ростер появился в «Лаборатории кофе» тоже летом 2017 года. Он открыл новые возможности для обжарщиков по экспериментам с зерном и позволил изменить подход к подбору профилей. WPG1 позволяет обжаривать семплы 100-200 грамм. Его настройки профилей достаточно просто переносятся на промышленные масштабы W15A и W60A. 
               
         .grid__col
-          .content-image.content-image--m-right
+          .content-image.content-image--m-right.content-image--hidden-m
             img(data-src='img/slideBgObjarka1.jpg' data-srcset='img/slideBgObjarka1@2x.jpg 2x' data-for='roasting_1').is-active
             img(data-src='img/slideBgObjarka2.jpg' data-srcset='img/slideBgObjarka2@2x.jpg 2x' data-for='roasting_2')
             img(data-src='img/slideBgObjarka3.jpg' data-srcset='img/slideBgObjarka3@2x.jpg 2x' data-for='roasting_3')
@@ -191,17 +197,21 @@ block content
               .content__tabs
                 .content__tab-nav
                   .content__tab-el(js-tab data-tab-for="service_1").is-active Настройка и обслуживание оборудования
+                  .content-slider__slide.is-mobile
+                    img(data-src='img/slideBgService1.jpg' data-srcset='img/slideBgService1@2x.jpg 2x')
                   .content__tab-el(js-tab data-tab-for="service_2") Повышение квалификации бариста
-
+                  .content-slider__slide.is-mobile
+                    img(data-src='img/slideBgService2.jpg' data-srcset='img/slideBgService2@2x.jpg 2x')
+                      
                 .content__tab(data-tab="service_1").is-active
                   p «Лаборатория кофе» специализируется на качественной обжарке зелёного кофе со всего мира. Прежде чем стать вкусным напитком, наше зерно проходит путь в несколько этапов: хранение, доставка, приготовление. Мы стараемся отслеживать все этапы от поставки зерна до чашки, чтобы гарантировать качество и вкус. Именно поэтому мы помогаем нашим партнёрам с подбором и настройкой кофемашин, кофемолок и другого оборудования. 
                 .content__tab(data-tab="service_2")
                   p Руки бариста – это один из важных элементов в цепочке от кофейной плантации до потребителя. Затраты на качественное свежеобжаренное зерно и хорошее оборудование могут сойти на нет, если бариста не умеет хорошо приготовить кофе. Именно поэтому мы проводим бесплатное обучение бариста для наших партнёров: чтобы наше зерно попадало в понимающие руки, которые смогут приготовить отличную чашку кофе. 
                   p По всем вопросам, связанным с организацией обучения для наших партнёров, можно обращаться в службу клиентского сервиса «Лаборатории кофе». 
-                  a(href='#').btn.btn-outline Связаться
+                  a(href='#').btn.btn-outline.btn-outline--black Связаться
                   
         .grid__col
-          .content-image.content-image--m-right
+          .content-image.content-image--m-right.content-image--hidden-m
             img(data-src='img/slideBgService1.jpg' data-srcset='img/slideBgService1@2x.jpg 2x' data-for='service_1').is-active
             img(data-src='img/slideBgService2.jpg' data-srcset='img/slideBgService2@2x.jpg 2x' data-for='service_2')
             img.content-image__wood(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
@@ -217,6 +227,7 @@ block content
         .grid__col
           .content.content--scrollable
             .content__title Продукция
+            div(data-teleport-target="product-mobile")
             .content__text
               // тут текст продукции
               p Наша продуктовая линейка предусматривает максимум возможностей для партнёров, в зависимости от формата заведения, предпочтений и особенностей целевой аудитории. У нас есть недорогие бленды для массового потребителя, популярные моносорта для ценителей, уникальные specialty-лоты для гурманов. Для крупных сетей мы зачастую разрабатываем индивидуальные бленды, позволяющие держать оптимальный баланс вкуса, качества и цены.
@@ -235,10 +246,12 @@ block content
                   .get-offer__sucess-message Каталог отправлен вам на почту
                   
 
-        .grid__col
+        .grid__col(js-teleport data-teleport-to="product-mobile" data-teleport-condition="<768")
           .product-image
             img(data-src='img/products.png' data-srcset='img/products@2x.png 2x')
-                            
+          .product-image.is-mobile
+            img(data-src='img/productsMobile.png' data-srcset='img/productsMobile@2x.png 2x')
+                                          
   
     //////////
     // BLOG
@@ -347,7 +360,7 @@ block content
 
                   p 
                     b Александр Горлов, <br>
-                    |  руководитель отдела клиентского сервиса
+                    b  руководитель отдела клиентского сервиса
 
                   p 
                     | Телефон: 
@@ -363,7 +376,7 @@ block content
                   
                 .contact-tab__content
                   p 
-                    | Елена Чернякова, <br> PR-директор. <br>
+                    b Елена Чернякова, <br> PR-директор. <br>
                     | Если у вас есть предложение,  вы проводите мероприятие  или ищете информацию о нас. 
 
                   p
@@ -386,14 +399,23 @@ block content
                     a(href="tel:+79035689933") +7 (903) 568-99-33<br>
                     | e-mail: 
                     a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
-
+              
+              .contact-mailing
+                a(href='#').btn.btn-outline.btn-outline--black Подписаться на рассылку
+                    
+                    
         .grid__col
           .content-map
             // map here
             #contact-map
             img.content-map__wood(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
         
-
+    
+    .mobile-top
+      .controls__up(js-first-section)
+        +icon('ico-down-arrow')
+        span Наверх
+        
   //////////
   // CONTROLS
   //////////
