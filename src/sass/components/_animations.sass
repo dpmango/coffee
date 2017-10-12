@@ -1,0 +1,54 @@
++rmin($tablet)
+  .hero__uptitle, .hero__title, .hero__description, .hero__cta
+    opacity: 0
+    transform: translate3d(0,-30px,0)
+    transition: all $transitionSpeed ease
+
+  .hero__uptitle
+    transition-delay: .25s
+  .hero__title
+    transition-delay: .4s
+    transform: translate3d(0,-60px,0)
+  .hero__description
+    transition-delay: .65s
+  .hero__cta
+    transition-delay: .8s
+
+  .section.active
+    .hero__uptitle, .hero__title, .hero__description, .hero__cta
+      opacity: 1
+      transform: translate3d(0,0,0)
+
+
+  // content
+  .content__title
+    opacity: 0
+    transform: translate3d(0,-30px,0)
+    transition: all .3s .2s ease
+  .content__text
+    opacity: 0
+    transform: translate3d(0,-60px,0)
+    transition: all .4s .4s ease
+
+  .content-image, .content-slider
+    transform: translate3d(100%,0px,0)
+    transition: all .5s .5s ease
+    img:not(.content-image__wood)
+      transform: translate3d(-25%,-50%,0)
+      transition: all .5s .75s ease-in-out
+
+  .product-image
+    opacity: 0
+    transform: translate3d(100%,0px,0)
+    transition: all .5s .5s ease
+
+  .section.active
+    .content__title, .content__text, .content-image, .content-slider
+      opacity: 1
+      transform: translate3d(0,0,0)
+    .content-image, .content-slider
+      img:not(.content-image__wood)
+        transform: translate3d(-50%,-50%,0)
+    .product-image
+      opacity: 1
+      transform: translate3d(0,0,0)

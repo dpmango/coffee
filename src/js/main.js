@@ -48,10 +48,14 @@ $(document).ready(function(){
   		// scrollOverflowReset: true,
   		// scrollOverflowOptions: null,
 
+      css3: true,
+      scrollingSpeed: 1000,
+
       normalScrollElements: '.content--scrollable',
 
       // callbacks
       onLeave: function(index, nextIndex, direction){
+        console.log('leaving')
         // set classes for invisible elements
         var lastIndex = $('.section').last().index() + 1;
         if ( nextIndex >= 2 ){

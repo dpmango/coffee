@@ -85,6 +85,21 @@
       margin-top: 12px
       font-size: 14px
       font-family: 'Roboto Slab', sans-serif
+  &__mailer
+    position: absolute
+    top: 0
+    bottom: 0
+    z-index: 5
+    width: 50%
+    text-align: center
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    opacity: 0
+    pointer-events: none
+    transform: translate3d(0,-30px,0)
+    transition: all $transitionSpeed $ease
   &.is-visible
     opacity: 1
     pointer-events: all
@@ -96,11 +111,10 @@
       opacity: 0
       pointer-events: none
       transform: translate3d(0,-30px,0)
-    .controls__up
+    .controls__up, .controls__mailer
       opacity: 1
       pointer-events: all
       transform: translate3d(0,0,0)
-
 
 +rh(800)
   .controls
