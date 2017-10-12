@@ -67,6 +67,11 @@
       max-height: calc(100vh - 550px)
       &::after
         display: none
+    &--longer
+      margin-bottom: 100px
+      max-height: calc(100vh - 550px)
+      &::after
+        bottom: 20px
   &--blog
     padding-left: 0
     padding-top: 450px
@@ -93,15 +98,17 @@
       height: auto
       transition: all $transitionSpeed $ease
       &[data-for]
-        opacity: 0
+        // opacity: 0
+        transform: translate3d(50%,-50%, 0)
       &.is-active
-        opacity: 1
+        transform: translate3d(-50%,-50%, 0)
+        // opacity: 1
     &--m-right
       img:not(.content-image__wood)
-        left: calc(50% - 15%)
+        left: calc(50% - 10%)
     &--m-left
       img:not(.content-image__wood)
-        left: calc(50% + 15%)
+        left: calc(50% + 10%)
     &--no-grow
       flex: 0 0 auto
       height: 700px
@@ -113,7 +120,11 @@
       right: 0
       width: 15%
       max-width: 120px
+      min-height: 100%
       z-index: 10
+      &--left
+        right: auto
+        left: 0
 
   &-slider
     display: flex
@@ -178,6 +189,7 @@
     margin-left: auto
     margin-right: auto
     flex: 0 0 auto
+    white-space: nowrap
     // margin-bottom: 65px
     font-size: 40px
     letter-spacing: 7px
@@ -214,22 +226,25 @@
   // inside content (text + tabs)
   &__tabs
     display: flex
+    margin-top: 40px
     .content
       &__tab-nav
-        flex: 0 1 auto
+        flex: 0 0 190px
       &__tab-el
         &::after, &::before
           display: none
       &__tab
-        flex: 0 1 100%
+        flex: 0 0 420px
         border-left: 2px solid #0F0F0F
         padding-top: 0
+
 
   &__tab-nav
     flex: 0 1 auto
 
   &__tab-el
     position: relative
+    // z-index: 5
     font-family: 'Roboto Slab', sans-serif
     font-size: 18px
     font-weight: 300
@@ -238,11 +253,6 @@
     letter-spacing: -.22px
     cursor: pointer
     transition: all $transitionSpeed $ease
-    &.is-active, &:hover
-      color: $colorAcent
-    &.is-active
-      &::after, &::before
-        opacity: 1
     &:last-child
       margin-bottom: 0
     &::after, &::before
@@ -252,27 +262,41 @@
       background: #A5A5A5
       opacity: 0
       pointer-events: none
-      transition: all $transitionSpeed $ease
+      transition: transform $transitionSpeed $ease
     &::after
       top: 50%
       right: -1040px
       width: 1000px
-      transform: translateY(-50%)
+      transform: translate3d(100px,-50%,0)
       height: 1px
     &::before
       top: 50%
       right: -20px
-      transform: translateY(-50%)
+      transform: translate3d(-20px,-50%,0)
       size: 4px
       border-radius: 50%
-
+    &.is-active, &:hover
+      color: $colorAcent
+    &.is-active
+      &::after, &::before
+        opacity: 1
+        transform: translate3d(0,-50%,0)
+  // &__tab-container
+  //   position: relative
+  // refactor from display none for animations
   &__tab
     display: none
     flex: 0 1 50%
     padding-left: 20px
     padding-right: 20px
+    opacity: 0
+    transform: translate3d(0,40px,0)
+    transition: all $transitionSpeed $ease
     &.is-active
       display: block
+      opacity: 1
+      transform: translate3d(0,0,0)
+
 
 .product-image
   flex: 1 1 auto
@@ -331,6 +355,7 @@
         top: 100px
       &::after
         bottom: -30px
+
     &--blog
       padding-top: 300px
       padding-left: 0

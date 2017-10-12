@@ -22,10 +22,24 @@
     opacity: 0
     transform: translate3d(0,-45px,0)
     transition: transform .3s .3s ease, opacity .3s .3s linear
-  .content__text p
-    opacity: 0
-    transform: translate3d(0,-60px,0)
-    transition: transform .4s .5s ease, opacity .4s .5s linear
+  .content__text
+    p
+      opacity: 0
+      transform: translate3d(0,-60px,0)
+      transition: transform .4s .5s ease, opacity .4s .5s linear
+  .content__tab-nav
+    .content__tab-el
+      opacity: 0
+      transform: translate3d(0,-50px,0)
+      transition: transform .4s ease, opacity .4s linear
+      &:nth-child(1)
+        transition-delay: .65s
+      &:nth-child(3)
+        transition-delay: .65s
+      &:nth-child(5)
+        transition-delay: .8s
+      &:nth-child(7)
+        transition-delay: .95s
 
   .content-image
     transform: translate3d(100%,0px,0)
@@ -56,12 +70,16 @@
     .hero__uptitle, .hero__title, .hero__description, .hero__cta
       opacity: 1
       transform: translate3d(0,0,0)
-    .content__title, .content__text p, .content-image, .content-slider
+    .content__title, .content__text p, .content__tab-nav .content__tab-el, .content-image, .content-slider
       opacity: 1
       transform: translate3d(0,0,0)
     .content-image
       img:not(.content-image__wood)
         transform: translate3d(-50%,-50%,0)
+        &[data-for]
+          transform: translate3d(50%,-50%,0)
+          &.is-active
+            transform: translate3d(-50%,-50%, 0)
     .content-slider img
       transform: translate3d(-50%,-50%,0)
       // transition: opacity $transitionSpeed $ease

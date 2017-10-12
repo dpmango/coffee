@@ -73,7 +73,7 @@ block content
                 .content__tab-el(js-tab data-tab-for="about_4") Сопутствующие товары
                 .content-slider__slide.is-mobile
                   img(data-src='img/slideBgAbout4Mobile.jpg' data-srcset='img/slideBgAbout4Mobile@2x.jpg 2x')
-
+            
               .content__tab(js-dymamic-tab-pad data-tab="about_1").is-active
                 p «Лаборатория кофе» объединяет людей, которых можно назвать лучшими в своём деле. Производством руководит Сергей Степанчук — квалифицированный обжарщик, сертифицированный судья SCAE (Speciality Coffee Association of Europe), многократный финалист и победитель российских и международных чемпионатов по приготовлению кофе.
                 p Все обжарщики «Лаборатории кофе» имеют опыт работы бариста, организовывают и поддерживают события кофейной индустрии, обмениваются опытом с российскими и иностранными коллегами, участвуют в соревнованиях разного уровня.
@@ -110,8 +110,9 @@ block content
               p «Лаборатория кофе» объединяет людей, которых можно назвать лучшими в своём деле. Все наши обжарщики имеют опыт работы бариста, организовывают и поддерживают события кофейной индустрии, обмениваются опытом с российскими и иностранными коллегами, участвуют в соревнованиях разного уровня.
 
         .grid__col
-          .content-image        
+          .content-image.content-image--m-left
             img(data-src='img/slideBgTeam.jpg' data-srcset='img/slideBgTeam@2x.jpg 2x')
+            img.content-image__wood.content-image__wood--left(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
 
     //////////
     // ROASTING
@@ -121,7 +122,7 @@ block content
     .section(data-section="roasting" data-anchor="roasting1")
       .grid
         .grid__col
-          .content.content--scrollable
+          .content.content--scrollable.content--scrollable--longer
             .content__title Обжарка кофе 
             .content__text
               p Производство «Лаборатории кофе» — это три ростера Giesen разной модификации. При помощи каждого из ростеров мы решаем разные задачи: от масштабных объёмов под эспрессо для сетевых кофеен до деликатных экспериментов с микролотами для чемпионатов. Благодаря единой платформе, разработанной компанией «Giesen Coffee Roasters», на которой работают все три ростера, обжарщики могут быстро адаптировать профили обжарки от одного ростера к другому. Таким образом мы минимизируем время на выполнение каждого нового заказа, даже если он нестандартный, сводим к минимуму затраты на подбор профиля обжарки, оптимизируем трудозатраты и энергоёмкость производства. 
@@ -153,7 +154,8 @@ block content
             img(data-src='img/slideBgObjarka1.jpg' data-srcset='img/slideBgObjarka1@2x.jpg 2x' data-for='roasting_1').is-active
             img(data-src='img/slideBgObjarka2.jpg' data-srcset='img/slideBgObjarka2@2x.jpg 2x' data-for='roasting_2')
             img(data-src='img/slideBgObjarka3.jpg' data-srcset='img/slideBgObjarka3@2x.jpg 2x' data-for='roasting_3')
-            img.content-image__wood(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
+            // just white fill
+            .content-image__wood(style="background: white")
 
     // SECTION
     .section(data-section="roasting" data-anchor="roasting2")

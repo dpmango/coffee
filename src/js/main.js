@@ -284,13 +284,21 @@ $(document).ready(function(){
   }
 
   // tab padding tab
-  function setDynamicTabs(){
+  function setDynamicTabs(firstInit){
     $('[js-dymamic-tab-pad]').each(function(i, tab){
       var linkedEl = $('.content__tab-el[data-tab-for='+ $(tab).data('tab') +']');
 
       if ( linkedEl ){
         if ( _window.width() > media.tablet ){
-          var linkedElOffset = linkedEl.position().top - parseInt(linkedEl.closest('.content__text').css('padding-top'),10) + linkedEl.height()
+          // offset transform calculation
+          var firstInitOffset;
+          if ( firstInit ){
+            firstInitOffset = 50
+          } else {
+            firstInitOffset = 0
+          }
+
+          var linkedElOffset = linkedEl.position().top - parseInt(linkedEl.closest('.content__text').css('padding-top'),10) + linkedEl.height() + firstInitOffset
         } else {
           var linkedElOffset = 0;
         }
@@ -301,8 +309,12 @@ $(document).ready(function(){
       }
     })
   }
+  setDynamicTabs(true);
+  // update for transform3d calculations
+  setTimeout(function(){
+    setDynamicTabs(false);
+  }, 5000)
 
-  setDynamicTabs();
 
   _window.resized(500, setDynamicTabs);
 
