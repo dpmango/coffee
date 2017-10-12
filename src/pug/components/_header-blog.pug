@@ -8,20 +8,20 @@ header.header.is-half
 
     .header__logo(js-first-section)
       +icon('ico-logo')
-    // refactor js teleport - binding issue
-    ul.header__menu(js-header-navigation data-teleport-to="mobile-menu" data-teleport-condition='<768')
+
+    ul.header__menu(js-header-navigation js-teleport data-teleport-to="mobile-menu" data-teleport-condition='<768')
       li
-        a(href="#about") О компании
+        a(href="homepage.html") О компании
       li
-        a(href="#roasting") Обжарка кофе
+        a(href="homepage.html") Обжарка кофе
       li
-        a(href="#service") Сервис
+        a(href="homepage.html") Сервис
       li
-        a(href="#products") Продукция 
+        a(href="homepage.html") Продукция 
       li
-        a(href="#blog") Блог
+        a(href="homepage.html") Блог
       li
-        a(href="#contacts") Контакты
+        a(href="homepage.html") Контакты
     .header__socials
       a(href='#' target="_blank") IN
       a(href='#' target="_blank") FB
@@ -30,15 +30,7 @@ header.header.is-half
 .mobile-menu
   .mobile-menu__wrapper
     ul.mobile-menu__menu(js-header-navigation data-teleport-target="mobile-menu")
-      li
-        a(href="#about") О компании
-      li
-        a(href="#roasting") Обжарка кофе
-      li
-        a(href="#service") Сервис
-      li
-        a(href="#products") Продукция 
-      li
-        a(href="#blog") Блог
-      li
-        a(href="#contacts") Контакты
+
+    .header__socials
+      a(href='#' target="_blank") IN
+      a(href='#' target="_blank") FB

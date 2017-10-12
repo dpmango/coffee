@@ -4,4 +4,4 @@ PageList:
 - file: homepage.html
   ready: 100
 - file: blog-page.html
-  ready: 50
+  ready: 100

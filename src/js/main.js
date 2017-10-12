@@ -55,7 +55,6 @@ $(document).ready(function(){
 
       // callbacks
       onLeave: function(index, nextIndex, direction){
-        console.log('leaving')
         // set classes for invisible elements
         var lastIndex = $('.section').last().index() + 1;
         if ( nextIndex >= 2 ){
@@ -354,7 +353,10 @@ $(document).ready(function(){
   /////////////
 
   // When the window has finished loading create our google map below
-  google.maps.event.addDomListener(window, 'load', init);
+  if ( $('#contact-map').length > 0 ){
+    google.maps.event.addDomListener(window, 'load', init);
+  }
+
 
   function init() {
       // Basic options for a simple Google Map
