@@ -367,6 +367,8 @@ $(document).ready(function(){
           styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
       };
 
+      var icon = 'img/mapsMarker.png';
+
       // Get the HTML DOM element that will contain your map
       // We are using a div with id="map" seen below in the <body>
       var mapElement = document.getElementById('contact-map');
@@ -374,12 +376,61 @@ $(document).ready(function(){
       // Create the Google Map using our element and options defined above
       var map = new google.maps.Map(mapElement, mapOptions);
 
-      // Let's also add a marker while we're at it
+      var contentString = '<div class="g-marker">'+
+          '<p><b>Офис и производство</b>Синельниковская ул., 12</p>'+
+          '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
       var marker = new google.maps.Marker({
           position: new google.maps.LatLng(55.546167, 37.575505),
+          icon: icon,
           map: map,
-          title: 'Snazzy!'
+          title: 'Офис и производство'
       });
+
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+
+      // open on mobile by default
+      if ( _window.width < media.tablet ){
+        setTimeout(function(){
+          infowindow.open(map, marker);
+        }, 100)
+      }
+
+      google.maps.event.addListener(map, 'click', function() {
+        infowindow.close();
+      });
+
+      // INFOWINDOW CUSTOMIZE.
+      google.maps.event.addListener(infowindow, 'domready', function() {
+
+        var iwOuter = $('.gm-style-iw');
+        var iwBackground = iwOuter.prev();
+        iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+        iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+        // set dialog pos
+        iwOuter.parent().parent().css({left: '-70px', top: '34px'});
+
+        // remove arrow
+        iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 10000px !important;'});
+        iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 10000px !important;'});
+
+        iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'none', 'z-index' : '-100'});
+        iwBackground.children(':nth-child(3)').find('div').children().css({'display': 'none'});
+
+        //remove close btn
+        var iwCloseBtn = iwOuter.next();
+        iwCloseBtn.css({display: 'none'});
+        $('.iw-bottom-gradient').css({display: 'none'});
+
+      });
+
   };
 
   // CONTACT TABS
