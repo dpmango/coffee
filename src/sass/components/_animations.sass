@@ -58,19 +58,41 @@
       &:nth-child(4)
         transition-delay: 1.15s
 
+  .contact-tab
+    opacity: 0
+    transform: translate3d(0,-40px,0)
+    transition: tranasform .35s .5s ease
+
+  .content-map
+    transform: translate3d(100%,0px,0)
+    transition: tranasform .5s .6s ease
 
   .product-image
     opacity: 0
     transform: translate3d(100%,0px,0)
     transition: all .5s .5s ease
 
+  .blog-card
+    opacity: 0
+    transform: translate3d(0%,60px,0)
+    transition: all .4s .5s ease
+    &:nth-child(2)
+      transition-delay: .6s
+    &:nth-child(3)
+      transition-delay: .7s  
+    &:nth-child(4)
+      transition-delay: .8s
+    &:nth-child(5)
+      transition-delay: .9s
+    &:nth-child(6)
+      transition-delay: 1s
 
   // setting
   .section.active, .blogpage
     .hero__uptitle, .hero__title, .hero__description, .hero__cta
       opacity: 1
       transform: translate3d(0,0,0)
-    .content__title, .content__text p, .content__tab-nav .content__tab-el, .content-image, .content-slider
+    .content__title, .content__text p, .content__tab-nav .content__tab-el, .content-image, .content-slider, .content-map, .contact-tab, .blog-card
       opacity: 1
       transform: translate3d(0,0,0)
     .content-image

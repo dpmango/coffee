@@ -617,6 +617,30 @@ $(document).ready(function(){
     _window.resized(300, collapseCheckMedia)
   });
 
+  // BLOG PAGE
+  if ( $('.blogpage').length > 0 ){
+    blogControls();
+    _window.scrolled(20, blogControls)
+  }
+
+  function blogControls(){
+    var wScroll = _window.scrollTop();
+    var scrollBottom = _document.height() - (wScroll + _window.height());
+    var scrollPercent = 100 * wScroll / (_document.height() - _window.height());
+
+    if ( scrollBottom < 200 ){
+      $('.controls__mail-link').addClass('is-showing')
+    } else {
+      $('.controls__mail-link').removeClass('is-showing')
+    }
+    var incrementProgress = 70 - ( scrollPercent / 5 )
+
+
+    $('.controls__progress').css({
+      'transform': 'translate3d('+incrementProgress+'%,0,0)'
+    });
+  }
+
 
 
 
