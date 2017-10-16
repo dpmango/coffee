@@ -78,6 +78,20 @@
     .content__title
       margin-left: 180px
 
+  &--taller-hd
+    +rmin($wide)
+      margin-top: 350px
+      max-height: calc(100vh - 450px)
+
+      &::before
+        top: 200px
+      &::after
+        bottom: -20px
+      .content
+        &__title
+          top: 280px
+
+
   &--page
     padding-top: 380px
 
@@ -180,7 +194,7 @@
   &__title
     position: absolute
     z-index: 5
-    top: 390px
+    top: 380px
     left: 0px
     right: 0
     // тут нужен рефактор на резину
