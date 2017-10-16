@@ -73,6 +73,13 @@ $(document).ready(function(){
           $('.controls').removeClass('is-visible');
         }
 
+        // update tabs (invis calculation fix)
+        if ( nextIndex == 4 ){
+          setTimeout(function(){
+            setDynamicTabs(false);
+          }, 1000)
+        }
+
         // custom navigation
         $('.section').each(function(i, section){
           var sectionIndex = i + 1
