@@ -77,7 +77,7 @@ $(document).ready(function(){
         if ( nextIndex == 4 ){
           setTimeout(function(){
             setDynamicTabs(false);
-          }, 1000)
+          }, 1500)
         }
 
         // custom navigation
@@ -96,9 +96,17 @@ $(document).ready(function(){
         var totalIndex = $('.section').length
         var incrementProgress = 70 - (30 / $('.section').length) * nextIndex
 
-        $('.controls__progress').css({
-          'transform': 'translate3d('+incrementProgress+'%,0,0)'
-        });
+        if ( nextIndex !== 10 ){
+          $('.controls__progress').css({
+            'transform': 'translate3d('+incrementProgress+'%,0,0)'
+          })
+        } else {
+          $('.controls__progress').css({
+            'transform': 'translate3d(80%,0,0)'
+          })
+        }
+
+
       }
     });
   }

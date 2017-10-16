@@ -74,9 +74,11 @@
         bottom: 20px
   &--blog
     padding-left: 0
-    padding-top: 450px
+    padding-top: 300px
     .content__title
       margin-left: 180px
+      +rmin($wide)
+        top: 340px
 
   &--taller-hd
     +rmin($wide)
@@ -89,7 +91,7 @@
         bottom: -20px
       .content
         &__title
-          top: 280px
+          top: 300px
 
 
   &--page
@@ -519,6 +521,8 @@
 
 // CONTACT TAB
 .contact-tab
+  +rmin($wide)
+    width: 520px
   &__head
     position: relative
     display: flex
@@ -555,7 +559,6 @@
       transition: all $transitionSpeed $ease
       &:hover
         color: $colorAcent
-
   &.is-active
     .contact-tab__head
       &::before
