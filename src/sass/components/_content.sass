@@ -292,9 +292,10 @@
       transform: translate3d(-20px,-50%,0)
       size: 4px
       border-radius: 50%
-    &.is-active, &:hover
-      color: $colorAcent
+    &:hover:not(.is-active)
+      color: #A5A5A5
     &.is-active
+      color: $colorAcent
       &::after, &::before
         opacity: 1
         transform: translate3d(0,-50%,0)

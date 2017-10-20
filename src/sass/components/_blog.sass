@@ -56,9 +56,10 @@
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.50)
     border-color: transparent
     &:hover
-      border-color: $colorAcent
-      background: $colorAcent
-      color: white
+      color: $colorHover
+      border: 1px solid $colorHover
+      background: transparent
+      opacity: .5
 
 +r($wide)
   .blog-nav
@@ -150,9 +151,10 @@
       img
         transform: translate3d(-50%,-50%,0) scale(1.1)
     .blog-card__more
-      border-color: $colorAcent
-      background: $colorAcent
-      color: white
+      border-color: transparent
+      font-size: 23px
+      color: $colorAcent
+      background: transparent
 
 +r($tablet)
   .blog-grid
