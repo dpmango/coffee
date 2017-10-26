@@ -20,6 +20,8 @@
     "slick-carousel": "^1.7.1",
     "jquery-mask-plugin": "^1.14.11",
     "magnific-popup": "^1.1.0",
-    "fullpage.js": "^2.9.4"
+    "fullpage.js": "^2.9.4",
+    "viewport-units-buggyfill": "^0.6.2",
+    "svg4everybody": "^2.1.9"
   }
 }

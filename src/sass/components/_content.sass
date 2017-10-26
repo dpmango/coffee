@@ -352,6 +352,15 @@
         top: 150px
       &::after
         bottom: -30px
+      &--long
+        overflow-y: auto
+        &::after
+          display: block
+    &--taller-hd
+      .content
+        &__title
+          top: 240px
+
     &--blog
       padding-top: 300px
       padding-left: 0
@@ -359,6 +368,29 @@
       padding-top: 300px
     &__title
       top: 240px
+
++r(1720)
+  .content
+    &__text
+      &--tabs
+        .content__tab
+          margin-right: -50%
+          flex: 0 0 320px
+
++r(1440)
+  .content
+    &__text
+      &--tabs
+        .content__tab
+          margin-right: -50px
+          flex: 0 1 auto
+
+    &__tabs
+      .content
+        &__tab
+          margin-right: -50px
+          flex: 0 1 auto
+
 
 +r($wide)
   .content
@@ -373,7 +405,13 @@
         top: 100px
       &::after
         bottom: -30px
-
+      &--long
+        &::after
+          display: block
+    &--taller-hd
+      .content
+        &__title
+          top: 220px
     &--blog
       padding-top: 300px
       padding-left: 0
@@ -396,12 +434,28 @@
       padding-left: 100px
       font-size: 30px
       letter-spacing: 5.25px
+      white-space: normal
     &__text
       padding-top: 70px
       p
         font-size: 10px
       &--noscroll
         padding-top: 0
+
+
+      &--tabs
+        .content__tab
+          margin-right: -25px
+
+    &__tabs
+      .content
+        &__tab-nav
+          flex: 0 0 120px
+        &__tab
+          margin-right: -25px
+
+    &__tab-el
+      font-size: 15px
 
 +r($tablet)
   .content
@@ -481,6 +535,8 @@
       display: block
       padding-right: 0
       padding-right: 0
+      opacity: 1
+      transform: translate3d(0,0,0)
       &:last-child
         margin-bottom: 0
 

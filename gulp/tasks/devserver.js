@@ -25,11 +25,13 @@ gulp.task('server', function() {
     logLevel: 'info', // 'debug', 'info', 'silent', 'warn'
     logConnections: false,
     logFileChanges: true,
-    open: Boolean(util.env.open || true),
+    open: true,
+    // open: Boolean(util.env.open || true),
     notify: false,
     ghostMode: false,
-    online: Boolean(util.env.tunnel),
-    tunnel: util.env.tunnel || null
+    //online: Boolean(util.env.tunnel),
+    // online: false,
+    // tunnel: util.env.tunnel || null
   });
 });
 

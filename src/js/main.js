@@ -32,6 +32,18 @@ $(document).ready(function(){
   // COMMON
   //////////
 
+
+  // patch svg support
+  // https://github.com/jonathantneal/svg4everybody
+  svg4everybody();
+
+  // Viewport units buggyfill
+  // window.viewportUnitsBuggyfill.init({
+  //   force: true,
+  //   // hacks: window.viewportUnitsBuggyfillHacks,
+  //   appendToBody: true
+  // });
+
  	// Prevent # behavior
 	$('[href="#"]').click(function(e) {
 		e.preventDefault();
