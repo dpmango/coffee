@@ -662,6 +662,10 @@ $(document).ready(function(){
     }
     var incrementProgress = 70 - ( scrollPercent / 5 )
 
+    if ( _window.width() < media.tablet ){
+      incrementProgress = incrementProgress / 2
+    }
+
 
     $('.controls__progress').css({
       'transform': 'translate3d('+incrementProgress+'%,0,0)'
