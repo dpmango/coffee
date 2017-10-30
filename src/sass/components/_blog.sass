@@ -249,6 +249,7 @@
   margin-left: auto
   margin-right: auto
   &-800
+    width: 100%
     max-width: 800px
     margin-left: auto
   p
@@ -277,6 +278,9 @@
       padding: 10px
       &:last-child
         padding-right: 0
+
+      img
+        max-width: auto
 
   blockquote
     position: relative
@@ -332,6 +336,7 @@
     p
       font-size: 14px
 
+
 +r($tablet)
   .blogpage
     .grid
@@ -343,6 +348,21 @@
       margin: 20px 0
       figcaption
         font-size: 10px
+
+    img
+      &[style*="float:left"]
+        margin-right: 0
+      &[style*="float:right"]
+        margin-left: 0
+      float: none !important
+      max-width: 100%
+
+
+    blockquote
+      margin: 35px 0
+
+    figure
+      margin-top: 35px 0
 
 
 .blog-similar
@@ -371,3 +391,8 @@
       left: auto
       right: -11px
       top: 50px
+
++r($tablet)
+  .blog-similar
+    .controls__up
+      position: absolute

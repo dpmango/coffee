@@ -161,11 +161,11 @@ block content
         a(href='#' target="_blank").controls__mailer.controls__mail-link 
           span.lg Подписаться на рассылку
           span.xs Рассылка
-        a(href='#' target="_blank")
+        a(href="javascript:fbShare('http://localhost:3000', 'img/blog-image-2.jpg', 'Заголовок', 'Название сайта', 'Краткое описание', 520, 350)" target="")
           +icon('ico-social-facebook')
-        a(href='#' target="_blank")
+        a(href='#' target="_blank" onclick="Share.vkontakte('http://localhost:3000','Заголовок','img/blog-image-2.jpg','Текст описания')")
           +icon('ico-social-vk')
-        a(href='#' target="_blank")
+        a(href='https://twitter.com/home?status=http%3A//localhost%3A3000/blog-page.html' target="_blank")
           +icon('ico-social-twitter')
         a(href='#' target="_blank")
           +icon('ico-social-telegram')
