@@ -209,7 +209,29 @@ $(document).ready(function(){
 
   initFullpage();
 
-  _window.resized(100, initFullpage)
+  _window.resized(100, initFullpage);
+
+  // navigate section on end text scroll
+  $('.content--scrollable').on('mousewheel', debounce(contentScrollListener, 200) )
+
+  function contentScrollListener(e){
+    var scrollTop = $(this).scrollTop();
+    var scrollBottom = $(this).find('.content__text').outerHeight() - ( scrollTop + $(this).outerHeight() );
+
+    var direction;
+    if (e.originalEvent.wheelDelta >= 0) {
+      direction = "up"
+    } else {
+      direction = "down"
+    }
+    console.log(direction, scrollBottom, scrollTop)
+    if ( direction == "down" && scrollBottom < 5 ){
+      $.fn.fullpage.moveSectionDown();
+    } else if ( direction == "up" && scrollTop < 5 ){
+      $.fn.fullpage.moveSectionUp();
+    }
+  }
+
 
   // HEADER NAVIGATION
   $('[js-header-navigation] a').each(function(i,nav){
