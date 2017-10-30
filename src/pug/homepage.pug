@@ -110,7 +110,7 @@ block content
               p «Лаборатория кофе» объединяет людей, которых можно назвать лучшими в своём деле. Все наши обжарщики имеют опыт работы бариста, организовывают и поддерживают события кофейной индустрии, обмениваются опытом с российскими и иностранными коллегами, участвуют в соревнованиях разного уровня.
 
         .grid__col
-          .content-image
+          .content-image.content-image--m-right
             img(data-src='img/slideBgTeam.jpg' data-srcset='img/slideBgTeam@2x.jpg 2x')
             img.content-image__wood.content-image__wood--left(src='img/heroBgWood.jpg' srcset='img/heroBgWood@2x.jpg 2x')
 
@@ -210,7 +210,7 @@ block content
                 .content__tab(data-tab="service_2")
                   p Руки бариста – это один из важных элементов в цепочке от кофейной плантации до потребителя. Затраты на качественное свежеобжаренное зерно и хорошее оборудование могут сойти на нет, если бариста не умеет хорошо приготовить кофе. Именно поэтому мы проводим бесплатное обучение бариста для наших партнёров: чтобы наше зерно попадало в понимающие руки, которые смогут приготовить отличную чашку кофе. 
                   p По всем вопросам, связанным с организацией обучения для наших партнёров, можно обращаться в службу клиентского сервиса «Лаборатории кофе». 
-                  a(href='#').btn.btn-outline.btn-outline--black Связаться
+                  a(href='#' js-navigation-section data-to-section="12").btn.btn-outline.btn-outline--black Связаться
                   
         .grid__col
           .content-image.content-image--m-right.content-image--hidden-m
@@ -238,11 +238,15 @@ block content
                   a(href='#').btn.btn-outline.btn-outline--black Получить прайс- лист
                 form.get-offer__form(js-validate-offer)
                   .get-offer__form-input
-                    label Ваш e-mail
-                    input(type='email' name="email")
-                      
-                  button(type='submit')
-                    +icon('ico-btn-next')
+                    label Ваше имя
+                    input(type='text' name="name")
+                  .get-offer__form-row
+                    .get-offer__form-input
+                      label Ваш e-mail
+                      input(type='email' name="email")
+                        
+                    button(type='submit')
+                      +icon('ico-btn-next')
                 .get-offer__sucess
                   a(href="#").btn.btn-outline.btn-outline--black(js-offer-reset) Отправить повторно
                   .get-offer__sucess-message Каталог отправлен вам на почту
@@ -401,7 +405,49 @@ block content
                     a(href="tel:+79035689933") +7 (903) 568-99-33<br>
                     | e-mail: 
                     a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
-              
+              // tab
+              .contact-tab
+                .contact-tab__head
+                  span Дилерская сеть
+                  +icon('ico-down-arrow')
+                  
+                .contact-tab__content
+                  p 
+                    b Санкт-Петербург<br>
+                    | ул. Невского, д. 57
+                    | Телефон: 
+                    a(href="tel:+79035689933") +7 (903) 568-99-33<br>
+                    | e-mail: 
+                    a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
+                  p 
+                    b Санкт-Петербург<br>
+                    | ул. Невского, д. 57
+                    | Телефон: 
+                    a(href="tel:+79035689933") +7 (903) 568-99-33<br>
+                    | e-mail: 
+                    a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
+                  p 
+                    b Санкт-Петербург<br>
+                    | ул. Невского, д. 57
+                    | Телефон: 
+                    a(href="tel:+79035689933") +7 (903) 568-99-33<br>
+                    | e-mail: 
+                    a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
+              // tab
+              .contact-tab
+                .contact-tab__head
+                  span Extra tab
+                  +icon('ico-down-arrow')
+                  
+                .contact-tab__content
+                  p 
+                    b Санкт-Петербург<br>
+                    | ул. Невского, д. 57
+                    | Телефон: 
+                    a(href="tel:+79035689933") +7 (903) 568-99-33<br>
+                    | e-mail: 
+                    a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
+                        
               .contact-mailing
                 a(href='#').btn.btn-outline.btn-outline--black Подписаться на рассылку
                     
@@ -428,11 +474,18 @@ block content
       .controls__up(js-first-section)
         +icon('ico-down-arrow')
         span Наверх
-      .controls__mailer
-        a(href='#').btn.btn-outline.btn-outline--black Подписаться на рассылку
+      //- .controls__mailer
+      //-   a(href='#').btn.btn-outline.btn-outline--black Подписаться на рассылку
       .controls__socials
-        a(href='#' target="_blank") IN
-        a(href='#' target="_blank") FB
+        a(href='#' target="_blank").controls__mailer.controls__mail-link 
+          span.lg Подписаться на рассылку
+          span.xs Рассылка
+        a(href='#' target="_blank")
+          +icon('ico-social-facebook')
+        a(href='#' target="_blank")
+          +icon('ico-social-instagram')
+        a(href='#' target="_blank")
+          +icon('ico-social-telegram')
       .controls__progress
       
 

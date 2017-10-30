@@ -98,11 +98,17 @@ $(document).ready(function(){
         required: true,
         email: true
       },
+      name: {
+        required: true,
+      }
     },
     messages: {
       email: {
           required: "Заполните это поле",
           email: "Email содержит неправильный формат"
+      },
+      name: {
+          required: "Заполните это поле"
       },
     }
   });

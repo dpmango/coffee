@@ -212,24 +212,33 @@ $(document).ready(function(){
   _window.resized(100, initFullpage);
 
   // navigate section on end text scroll
-  $('.content--scrollable').on('mousewheel', debounce(contentScrollListener, 200) )
+  $('.content--scrollable').on('wheel', debounce(contentScrollListener, 200) )
 
   function contentScrollListener(e){
     var scrollTop = $(this).scrollTop();
     var scrollBottom = $(this).find('.content__text').outerHeight() - ( scrollTop + $(this).outerHeight() );
 
+    var delta = e.originalEvent.deltaY || e.originalEvent.detail || e.originalEvent.wheelDelta;
+
     var direction;
-    if (e.originalEvent.wheelDelta >= 0) {
-      direction = "up"
-    } else {
+
+    if (delta >= 1) {
       direction = "down"
+    } else if ( delta <= -1 ){
+      direction = "up"
     }
-    console.log(direction, scrollBottom, scrollTop)
+
+    var curSectionIndex = parseInt ( $(this).closest('.section').index() )
+
+    // console.log(delta, direction, scrollTop, scrollBottom)
     if ( direction == "down" && scrollBottom < 5 ){
       $.fn.fullpage.moveSectionDown();
+      // $.fn.fullpage.moveTo( curSectionIndex + 1 )
     } else if ( direction == "up" && scrollTop < 5 ){
       $.fn.fullpage.moveSectionUp();
+      // $.fn.fullpage.moveTo( curSectionIndex - 1 )
     }
+
   }
 
 
@@ -284,12 +293,20 @@ $(document).ready(function(){
     return false
   });
 
+  $('[js-navigation-section]').on('click', function(){
+    var selectedSection = $(this).data('to-section');
+    if ( selectedSection ){
+      $.fn.fullpage.moveTo( parseInt(selectedSection) );
+      return false
+    }
+  })
+
 
   //////////////
   // CONTENT PART
   /////////////
 
-  $('.content-slider__slide').on('click', function(){
+  $('.content-slider__slide').on('mouseenter', function(){
     if ( $(this).data('for-tab') ){
       tabHandler( $(this).data('for-tab') );
     } else {
@@ -300,7 +317,7 @@ $(document).ready(function(){
   });
 
   // tabs
-  $('[js-tab]').on('click', function(){
+  $('[js-tab]').on('mouseenter', function(){
     tabHandler( $(this).data('tab-for') )
   });
 

@@ -46,8 +46,14 @@ block content
   .controls.is-visible.is-blog
     .controls__wrapper
       .controls__socials
-        a(href='#' target="_blank").controls__mail-link Рассылка
-        a(href='#' target="_blank") IN
-        a(href='#' target="_blank") FB
+        a(href='#' target="_blank").controls__mailer.controls__mail-link 
+          span.lg Подписаться на рассылку
+          span.xs Рассылка
+        a(href='#' target="_blank")
+          +icon('ico-social-facebook')
+        a(href='#' target="_blank")
+          +icon('ico-social-instagram')
+        a(href='#' target="_blank")
+          +icon('ico-social-telegram')
       .controls__progress
         
