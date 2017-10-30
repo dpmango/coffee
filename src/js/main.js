@@ -711,6 +711,28 @@ $(document).ready(function(){
     });
   }
 
+  // blog similar publications
+  var slickSimilar = $('[js-slick-similar]').slick({
+    accesability: false,
+    variableWidth: false,
+    centerMode: false,
+    infinite: false,
+    dots: false,
+    arrows: false,
+    responsive: [{
+      breakpoint: 768,
+      settings: {
+        // variableWidth: false,
+        // slidesToShow: 1,
+        // slidesToScroll: 1,
+        padding: 20
+      }
+    }]
+  })
+
+  $('[js-up]').on('click', function(){
+    $('body, html').animate({scrollTop: $('.page').offset().top}, 1000);
+  })
 
 
 
