@@ -123,6 +123,16 @@ $(document).ready(function(){
     });
   }
 
+  // set controls mobile state
+  function setMobileControlsClass(){
+    if ( _window.width() < media.tablet ){
+      // $('.controls').addClass('is-last').addClass('is-visible');
+    } else {
+
+    }
+  }
+  setMobileControlsClass();
+
   function setHeaderNav(curSection){
     $('[js-header-navigation] li').each(function(i,val){
       if ( $(val).find('a').attr('href').substring(1) == curSection ){
@@ -212,33 +222,34 @@ $(document).ready(function(){
   _window.resized(100, initFullpage);
 
   // navigate section on end text scroll
-  $('.content--scrollable').on('wheel', debounce(contentScrollListener, 200) )
+  $('.content--scrollable:not([js-no-scroll-listener])').on('wheel', debounce(contentScrollListener, 200) )
 
   function contentScrollListener(e){
-    var scrollTop = $(this).scrollTop();
-    var scrollBottom = $(this).find('.content__text').outerHeight() - ( scrollTop + $(this).outerHeight() );
+    if ( _window.width() > media.tablet ){
+      var scrollTop = $(this).scrollTop();
+      var scrollBottom = $(this).find('.content__text').outerHeight() - ( scrollTop + $(this).outerHeight() );
 
-    var delta = e.originalEvent.deltaY || e.originalEvent.detail || e.originalEvent.wheelDelta;
+      var delta = e.originalEvent.deltaY || e.originalEvent.detail || e.originalEvent.wheelDelta;
 
-    var direction;
+      var direction;
 
-    if (delta >= 1) {
-      direction = "down"
-    } else if ( delta <= -1 ){
-      direction = "up"
+      if (delta >= 1) {
+        direction = "down"
+      } else if ( delta <= -1 ){
+        direction = "up"
+      }
+
+      var curSectionIndex = parseInt ( $(this).closest('.section').index() )
+
+      // console.log(delta, direction, scrollTop, scrollBottom)
+      if ( direction == "down" && scrollBottom < 5 ){
+        $.fn.fullpage.moveSectionDown();
+        // $.fn.fullpage.moveTo( curSectionIndex + 1 )
+      } else if ( direction == "up" && scrollTop < 5 ){
+        $.fn.fullpage.moveSectionUp();
+        // $.fn.fullpage.moveTo( curSectionIndex - 1 )
+      }
     }
-
-    var curSectionIndex = parseInt ( $(this).closest('.section').index() )
-
-    // console.log(delta, direction, scrollTop, scrollBottom)
-    if ( direction == "down" && scrollBottom < 5 ){
-      $.fn.fullpage.moveSectionDown();
-      // $.fn.fullpage.moveTo( curSectionIndex + 1 )
-    } else if ( direction == "up" && scrollTop < 5 ){
-      $.fn.fullpage.moveSectionUp();
-      // $.fn.fullpage.moveTo( curSectionIndex - 1 )
-    }
-
   }
 
 
@@ -392,7 +403,6 @@ $(document).ready(function(){
         var tabName = $(tab).data('tab');
         var linkedTitle = $('.content__tab-el[data-tab-for='+ tabName +']');
         //var linkedSlide = $('.content-slider__slide[data-for-tab=' + tabName +']')
-        console.log(linkedTitle)
         if ( linkedTitle.next('.content-slider__slide').length > 0 ){
           tab.insertAfter(linkedTitle.next('.content-slider__slide'));
           // if ( linkedSlide ){
@@ -591,6 +601,12 @@ $(document).ready(function(){
     $('.mobile-menu').toggleClass('is-active');
   });
 
+  // correct click - если не попал в крестик
+  $('.header__hamburger').on('click', function(e){
+    if ( e.target == this ){
+      $('[js-toggle-mobile-menu]').click();
+    }
+  })
 
   // TELEPORT PLUGIN
   $('[js-teleport]').each(function (i, val) {
@@ -685,8 +701,8 @@ $(document).ready(function(){
 
   // BLOG PAGE
   if ( $('.blogpage').length > 0 ){
-    blogControls();
-    _window.scrolled(20, blogControls)
+    // blogControls();
+    // _window.scrolled(20, blogControls)
   }
 
   function blogControls(){
@@ -699,6 +715,7 @@ $(document).ready(function(){
     } else {
       $('.controls__mail-link').removeClass('is-showing')
     }
+
     var incrementProgress = 70 - ( scrollPercent / 5 )
 
     if ( _window.width() < media.tablet ){
@@ -712,22 +729,27 @@ $(document).ready(function(){
   }
 
   // blog similar publications
+
   var slickSimilar = $('[js-slick-similar]').slick({
     accesability: false,
-    variableWidth: false,
+    variableWidth: true,
     centerMode: false,
     infinite: false,
     dots: false,
-    arrows: false,
-    responsive: [{
-      breakpoint: 768,
-      settings: {
-        // variableWidth: false,
-        // slidesToShow: 1,
-        // slidesToScroll: 1,
-        padding: 20
-      }
-    }]
+    arrows: false
+  })
+
+  slickSimilar.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    slick.$slider.attr('data-slick-section', nextSlide + 1)
+
+  });
+
+  $('[js-slick-next-s]').on('click', function(){
+    slickSimilar.slick('slickNext')
+  })
+
+  $('[js-slick-prev-s]').on('click', function(){
+    slickSimilar.slick('slickPrev')
   })
 
   $('[js-up]').on('click', function(){

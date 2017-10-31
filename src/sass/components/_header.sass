@@ -18,6 +18,9 @@
     left: 0
     background: white
     size: 76px
+    transition: box-shadow .2s ease
+    &:hover
+      box-shadow: 0px 5px 15px rgba(black, .1)
   &__wrapper
     display: flex
     align-items: center
@@ -59,6 +62,19 @@
       transition: all $transitionSpeed $ease
       &:hover
         color: $colorHover
+    &--icons
+      a:hover
+        .ico
+          &.ico-social-vk
+            color: $vk
+          &.ico-social-facebook
+            color: $facebook
+          &.ico-social-twitter
+            color: $twitter
+          &.ico-social-telegram
+            color: #0088cc
+  &--blog
+    position: relative
 
 @media only screen and (min-width: 1200px) and (max-width: 1450px)
   .header
@@ -67,6 +83,34 @@
         &__menu
           li
             margin-right: 20px
+
+@media only screen and (min-width: 1200px) and (min-height: 800px)
+  .header
+    &--blog
+      height: 320px
+      .header
+        &__logo
+          top: 65px
+          position: absolute
+          left: 50%
+          transform: translate3d(-50%,0,0)
+        &__menu
+          position: absolute
+          top: 210px
+          left: 50%
+          transform: translate3d(-50%,0,0)
+          margin: 0
+        &__socials
+          position: absolute
+          top: 205px
+          right: 0
+          margin: 0
+          a
+            font-size: 24px
+            margin-right: 10px
+
+
+
 
 +rmin($wide)
   .header
@@ -143,16 +187,24 @@
     &__socials
       flex: 0 0 76px
       display: flex
-      flex-direction: column-reverse
+      flex-direction: column
       align-items: center
       font-size: 14px
       margin: 0px 0 0 0
       transform: translateX(20px)
+      &:not(.header__socials--icons)
+        flex-direction: column-reverse
       a
         margin-right: 0
         margin-bottom: 0px
         &:last-child
           margin-bottom: 12px
+      &--icons
+        transform: translate3d(22px, -5px,0)
+        a
+          margin-bottom: 5px
+          &:last-child
+            margin-bottom: 0
 
 +rmin($tablet)
   .mobile-menu
@@ -168,6 +220,7 @@
   display: flex
   flex-direction: column
   z-index: 20
+  overflow-y: auto
   // opacity: 0
   transform: translate3d(0,100%,0)
   pointer-events: none
@@ -181,6 +234,7 @@
     flex: 1 0 auto
     display: flex
     flex-direction: column
+    // min-height: 580px
     padding: 30px 20px
     background: white
 
@@ -189,7 +243,7 @@
     flex-direction: column
     align-items: center
     text-align: center
-    margin: auto 0 auto 0
+    margin: 110px 0 auto 0
     padding: 30px 0
     font-family: 'Roboto Slab', sans-serif
     font-size: 14px

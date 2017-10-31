@@ -1,5 +1,5 @@
 // HEADER :: START
-header.header.is-half
+header.header.header--blog
   .header__wrapper
     .header__hamburger
       .hamburger.hamburger--collapse(js-toggle-mobile-menu)
@@ -18,13 +18,17 @@ header.header.is-half
         a(href="homepage.html") Сервис
       li
         a(href="homepage.html") Продукция 
-      li
-        a(href="homepage.html") Блог
+      li.is-active
+        a(href="blog-page.html") Блог
       li
         a(href="homepage.html") Контакты
-    .header__socials
-      a(href='#' target="_blank") IN
-      a(href='#' target="_blank") FB
+    .header__socials.header__socials--icons
+      a(href='#' target="_blank")
+        +icon('ico-social-facebook')
+      a(href='#' target="_blank")
+        +icon('ico-social-instagram')
+      a(href='#' target="_blank")
+        +icon('ico-social-telegram')
         
 
 .mobile-menu
@@ -32,5 +36,9 @@ header.header.is-half
     ul.mobile-menu__menu(js-header-navigation data-teleport-target="mobile-menu")
 
     .header__socials
-      a(href='#' target="_blank") IN
-      a(href='#' target="_blank") FB
+      a(href='#' target="_blank")
+        +icon('ico-social-facebook')
+      a(href='#' target="_blank")
+        +icon('ico-social-instagram')
+      a(href='#' target="_blank")
+        +icon('ico-social-telegram')

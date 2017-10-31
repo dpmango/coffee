@@ -22,16 +22,25 @@
     &::after
       right: -10%
   &--inner
+    display: block
     .slick-list
+      display: block
       overflow: visible
       &::before, &::after
         display: none
+    .slick-track
+      display: block
     .blog-card
+      min-height: 405px
       &:first-child
         flex: 0 0 280px
         width: 280px
         box-shadow: 0 5px 15px 0 rgba(0,0,0,0.14)
 
+
+    &[data-slick-section="1"]
+      + .blog-nav--prev
+        opacity: 0
 
 +r($tablet)
   .blog-grid
@@ -41,6 +50,7 @@
         filter: blur(6px)
     &--inner
       .blog-card
+        min-height: 340px
         &:first-child
           display: flex !important
 
@@ -64,13 +74,14 @@
   transform: translateY(-50%)
   right: 50px
   z-index: 6
+  transition: all $transitionSpeed $ease
   &--prev
     right: auto
     left: 50px
   .blog-card__more
     background: #FFFFFF
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.50)
-    border-color: transparent
+    // border-color: transparent
     &:hover
       color: $colorHover
       border: 1px solid $colorHover
@@ -126,8 +137,8 @@
     letter-spacing: -0.17px
 
   &__short
-    font-size: 11px
-    line-height: 1.9
+    font-size: 12px
+    line-height: 1.6
     margin: 15px 0
 
   &__bottom
@@ -179,9 +190,9 @@
     display: none
 
   .blog-card
-    margin-left: 25px
     flex: 0 0 220px
     width: 220px
+    margin-right: 25px
     &:first-child
       display: none !important
     &__image
@@ -198,13 +209,35 @@
 
 // GOES FOR BLOGPAGE
 
+.blog-back
+  margin-top: 10px
+  display: flex
+  align-items: center
+  font-family: 'Roboto Slab', serif
+  font-weight: 300
+  font-size: 14px
+  span
+    display: inline-block
+    margin-left: 15px
+    color: rgba($fontColor, .7)
+    transition: all $transitionSpeed $ease
+  .ico
+    transform: rotate(90deg)
+    font-size: 10px
+  &:hover
+    color: $colorAcent
+    span
+      color: $colorAcent
+
 .blog-title
-  font-family: 'Roboto Slab', sans-serif
+  margin-top: 60px
+  font-family: 'Roboto Slab', serif
   font-size: 24px
   line-height: 1.33
   margin-bottom: 15px
 
 .blog-date
+  margin-top: 40px
   font-size: 16px
   margin-bottom: 40px
 
@@ -336,14 +369,37 @@
     p
       font-size: 14px
 
++r($desktop)
+  .blog-title
+    font-size: 20px
+
+  .blog-author
+    &__logo
+      flex: 0 1 140px
+      &-wrapper
+        size: 100px
+
+    &__description
+      flex: 0 1 auto
+
+    &__title
+      font-size: 14px
+
+    &__name
+      font-size: 16px
 
 +r($tablet)
-  .blogpage
-    .grid
-      padding-top: 150px
+
+  .blog-title
+    margin-top: 30px
+
+  .blog-date
+    margin: 25px 0
+    font-size: 14px
 
   .blog-container
     padding-top: 1em
+    padding-bottom: 0px
     figure
       margin: 20px 0
       figcaption
@@ -360,12 +416,22 @@
 
     blockquote
       margin: 35px 0
+      font-size: 14px
 
     figure
       margin-top: 35px 0
 
+    p
+      font-size: 13px
 
+  .blog-grid--inner
+    .blog-card:first-child
+      flex-basis: 220px
+      width: 220px
+
+// similar
 .blog-similar
+  max-width: calc(100vw - 40px)
   position: relative
   &::before
     display: block
@@ -396,3 +462,11 @@
   .blog-similar
     .controls__up
       position: absolute
+
++r($mobile)
+  .blog-similar
+    &::before
+      display: none
+
+    .controls__up
+      top: -15px

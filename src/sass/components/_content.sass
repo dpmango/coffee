@@ -10,11 +10,18 @@
     display: flex
     flex-direction: column
 
-+r($wide)
+.blogpage
+  .grid
+    min-height: 1px
+
++rmin(1440)
   .grid
     &__col
-      &:nth-child(2)
-        padding-top: 150px
+      &--40
+        flex-basis: 40%
+      &--60
+        flex-basis: 60%
+
 
 +r($tablet)
   .grid
@@ -95,7 +102,7 @@
 
 
   &--page
-    padding-top: 380px
+    padding-top: 0px
     .content__text
       p
         font-size: 16px
@@ -131,7 +138,8 @@
         left: calc(50% + 10%)
     &--no-grow
       flex: 0 0 auto
-      height: 700px
+      min-height: 500px
+      height: calc(100vh - 180px)
 
     &__wood
       position: absolute
@@ -344,6 +352,13 @@
     &.is-mobile
       display: block
 
+
+@media only screen and (min-width: 1200px) and (min-height: 800px)
+  .content
+    &-image
+      &--no-grow
+        height: calc(100vh - 320px)
+
 +rh(800)
   .content
     &--scrollable
@@ -371,7 +386,7 @@
         display: none
 
     &--page
-      padding-top: 300px
+      padding-top: 0px
     &__title
       top: 240px
 
@@ -427,14 +442,11 @@
         display: inline-block
 
     &--page
-      padding-top: 220px
+      padding-top: 0px
       padding-left: 60px
       .content__text
         p
           font-size: 14px
-    &-image
-      &--no-grow
-        height: 550px
 
     // &-image
     //   &__wood
@@ -509,6 +521,9 @@
 
       &--hidden-m
         display: none
+      &--no-grow
+        height: auto
+        min-height: auto
     &-slider
       flex: 0 0 auto
       height: 0

@@ -11,9 +11,13 @@ block content
 
   // BLOG PAGE
   .grid
-    .grid__col
+    .grid__col.grid__col--40
       .content.content--page
         .content__text.content__text--noscroll
+          a(href="homepage.html").blog-back
+            +icon('ico-down-arrow')
+            span Назад
+            
           .blog-title Команда La Marzocco Russia о новинках 2017 года,  счастье и ответственности обладания кофемашинами  бренда с 90-летней историей
           .blog-date 10 сентября 2017г.
           .blog-author
@@ -30,13 +34,8 @@ block content
                 .blog-author__title Время чтения
                 .blog-author__name 16 мин.
                   
-                
-          p Основная деятельность компании — селекция и профессиональная обжарка кофе для кофеен, кондитерских и ресторанов. Мы перевернули весь мир, чтобы найти лучших поставщиков. Каждый день наши профессиональные обжарщики придают завершённость во вкусе зелёному зерну, которое приезжает напрямую с плантаций Бразилии, Колумбии, Коста-Рики, Эфиопии и других стран.
 
-          p Мы разработали продуктовую линейку, которая предусматривает максимум возможностей для наших партнёров, в зависимости от формата заведения, предпочтений и особенностей целевой аудитории. У нас есть и недорогие бленды для массового потребителя, и популярные моносорта для ценителей, и уникальные specialty-лоты для гурманов. Кроме этого, мы готовы идти навстречу нашим партнёрам, поэтому для крупных сетей мы зачастую разрабатываем уникальные бленды, позволяющие держать оптимальный баланс вкуса, качества и цены.
-
-
-    .grid__col
+    .grid__col.grid__col--60
       .content-image.content-image--no-grow
         img(src='img/slideBg1.jpg' srcset='img/slideBg1@2x.jpg 2x')
   
@@ -83,7 +82,8 @@ block content
       p Мы разработали продуктовую линейку, которая предусматривает максимум возможностей для наших партнёров, в зависимости от формата заведения, предпочтений и особенностей целевой аудитории. У нас есть и недорогие 
       p Основная деятельность компании — селекция и профессиональная обжарка кофе для кофеен, кондитерских и ресторанов. Мы перевернули весь мир, чтобы найти лучших поставщиков. Каждый день наши профессиональные обжарщики придают завершённость во вкусе зелёному зерну, которое приезжает напрямую с плантаций Бразилии, Колумбии, Коста-Рики, Эфиопии и других стран.
       
-      
+      span(data-teleport-target="mobile-controls")
+        
       .blog-similar
         
         .controls__up(js-up)
@@ -94,7 +94,7 @@ block content
         
         .blog-title Другие статьи
         
-        .blog-grid.blog-grid--inner(js-slick-similar)
+        .blog-grid.blog-grid--inner(js-slick-similar data-slick-section="1")
           // card
           a(href="blog-page.html" target="_blank").blog-card
             .blog-card__image
@@ -151,23 +151,32 @@ block content
                 .blog-card__date 20 Сентября 2017 Г.
                 .blog-card__more
                   +icon('ico-btn-next')
-
+                  
+        .blog-nav.blog-nav--prev
+          .blog-card__more.blog-card__more--reverse(js-slick-prev-s)
+            +icon('ico-btn-next')
+        .blog-nav
+          .blog-card__more(js-slick-next-s)
+            +icon('ico-btn-next')
   //////////
   // CONTROLS
   //////////
-  .controls.is-visible.is-blog
-    .controls__wrapper
-      .controls__socials
-        a(href='#' target="_blank").controls__mailer.controls__mail-link 
+  span(js-teleport data-teleport-condition="<568" data-teleport-to="mobile-controls")
+    .controls.is-visible.is-blog
+      .controls__wrapper
+        a(href='http://laboratoriacoffee.us16.list-manage.com/subscribe?u=f29206a1c7809b3868ef237d8&id=6f2be7d048' target="_blank").controls__mail-link 
           span.lg Подписаться на рассылку
           span.xs Рассылка
-        a(href="javascript:fbShare('http://localhost:3000', 'img/blog-image-2.jpg', 'Заголовок', 'Название сайта', 'Краткое описание', 520, 350)" target="")
-          +icon('ico-social-facebook')
-        a(href='#' target="_blank" onclick="Share.vkontakte('http://localhost:3000','Заголовок','img/blog-image-2.jpg','Текст описания')")
-          +icon('ico-social-vk')
-        a(href='https://twitter.com/home?status=http%3A//localhost%3A3000/blog-page.html' target="_blank")
-          +icon('ico-social-twitter')
-        a(href='#' target="_blank")
-          +icon('ico-social-telegram')
-      .controls__progress
-        
+        .controls__socials
+          .controls__socials-head Поделиться статьей:
+          .controls__socials-list
+            a(href="javascript:fbShare('http://localhost:3000', 'img/blog-image-2.jpg', 'Заголовок', 'Название сайта', 'Краткое описание', 520, 350)" target="")
+              +icon('ico-social-facebook')
+            a(href='#' target="_blank" onclick="Share.vkontakte('http://localhost:3000','Заголовок','img/blog-image-2.jpg','Текст описания')")
+              +icon('ico-social-vk')
+            a(href='https://twitter.com/home?status=http%3A//localhost%3A3000/blog-page.html' target="_blank")
+              +icon('ico-social-twitter')
+            a(href='#' target="_blank")
+              +icon('ico-social-telegram')
+        .controls__progress
+          

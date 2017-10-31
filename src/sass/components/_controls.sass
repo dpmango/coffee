@@ -48,6 +48,17 @@
       padding: 5px
       margin-right: 20px
       transition: all $transitionSpeed $ease
+      .ico
+        // transition: none
+        &:hover
+          &.ico-social-vk
+            color: $vk
+          &.ico-social-facebook
+            color: $facebook
+          &.ico-social-twitter
+            color: $twitter
+          &.ico-social-telegram
+            color: #0088cc
       &:last-child
         margin-right: 0
       &:hover
@@ -55,6 +66,7 @@
   &__mail-link
     margin-top: -4px
     font-size: 14px
+    font-weight: 700
     opacity: 0
     pointer-events: none
     transform: translate3d(0,25px,0)
@@ -142,8 +154,25 @@
   &.is-blog
     position: fixed
     .controls
+      &__wrapper
+        width: 630px
+        margin-left: auto
+        display: flex
+        align-items: center
       &__socials
+        flex-direction: column
+        align-items: flex-start
+        justify-content: center
         font-size: 22px
+        padding-right: 80px
+        &-head
+          font-size: 14px
+          margin-bottom: 10px
+          font-weight: 700
+          letter-spacing: -.2px
+        &-list
+          display: flex
+          align-items: center
         a
           margin-right: 12px
         .ico-social
@@ -151,6 +180,18 @@
             font-size: 17px
           &-twitter
             font-size: 20px
+      &__progress
+        z-index: -1
+        left: 0
+        transform: translate3d(0,0,0)
+      &__mail-link
+        margin-left: 50px
+        color: white
+        transform: translate3d(0,0,0)
+        opacity: 1
+        pointer-events: all
+        margin-right: 100px !important
+
 
   &.is-last
     .controls__mouse
@@ -178,6 +219,14 @@
     &__up
       left: 35px
 
+    &.is-blog
+      .controls
+        &__wrapper
+          width: 500px
+        &__socials
+          padding-right: 20px
+
+
 +r($tablet)
   .controls
 
@@ -188,7 +237,42 @@
       pointer-events: all
       transform: translate3d(0,0px,0)
 
+    &__progress
+      transform: translate3d(10%,0,0) !important
 
+
++r($mobile)
+  .controls
+    &__mail-link
+      span.xs
+        display: inline-block
+      span.lg
+        display: none
+    &.is-blog
+      position: static
+      margin: 50px -20px 50px 0
+      .controls
+        &__wrapper
+          width: 320px
+
+        &__socials
+          max-width: 160px
+          &-head
+            display: none
+          &-list
+            display: flex
+            align-items: center
+            flex-wrap: wrap
+            a
+              flex: 0 1 50%
+              margin-right: 0
+
+        &__mail-link
+          margin-left: 40px
+          margin-right: 40px !important
+
+        &__progress
+          transform: none !important
 
 #mouse
   .mouse

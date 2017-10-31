@@ -227,7 +227,7 @@ block content
     .section(data-section="products" data-anchor="products")
       .grid
         .grid__col
-          .content.content--scrollable.content--scrollable--longer.content--taller-hd
+          .content.content--scrollable.content--scrollable--longer.content--taller-hd(js-no-scroll-listener)
             .content__title Продукция
             div(data-teleport-target="product-mobile")
             .content__text
@@ -433,13 +433,6 @@ block content
                     a(href="tel:+79035689933") +7 (903) 568-99-33<br>
                     | e-mail: 
                     a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
-              // tab
-              .contact-tab
-                .contact-tab__head
-                  span Extra tab
-                  +icon('ico-down-arrow')
-                  
-                .contact-tab__content
                   p 
                     b Санкт-Петербург<br>
                     | ул. Невского, д. 57
@@ -447,9 +440,16 @@ block content
                     a(href="tel:+79035689933") +7 (903) 568-99-33<br>
                     | e-mail: 
                     a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
-                        
+                  p 
+                    b Санкт-Петербург<br>
+                    | ул. Невского, д. 57
+                    | Телефон: 
+                    a(href="tel:+79035689933") +7 (903) 568-99-33<br>
+                    | e-mail: 
+                    a(href="mailto:ast@laboratoriacoffee.ru") ast@laboratoriacoffee.ru 
+
               .contact-mailing
-                a(href='#').btn.btn-outline.btn-outline--black Подписаться на рассылку
+                a(href='http://laboratoriacoffee.us16.list-manage.com/subscribe?u=f29206a1c7809b3868ef237d8&id=6f2be7d048').btn.btn-outline.btn-outline--black Подписаться на рассылку
                     
                     
         .grid__col
@@ -477,7 +477,7 @@ block content
       //- .controls__mailer
       //-   a(href='#').btn.btn-outline.btn-outline--black Подписаться на рассылку
       .controls__socials
-        a(href='#' target="_blank").controls__mailer.controls__mail-link 
+        a(href='http://laboratoriacoffee.us16.list-manage.com/subscribe?u=f29206a1c7809b3868ef237d8&id=6f2be7d048' target="_blank").controls__mailer.controls__mail-link 
           span.lg Подписаться на рассылку
           span.xs Рассылка
         a(href='#' target="_blank")
