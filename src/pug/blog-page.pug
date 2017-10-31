@@ -14,7 +14,7 @@ block content
     .grid__col.grid__col--40
       .content.content--page
         .content__text.content__text--noscroll
-          a(href="homepage.html").blog-back
+          a(href="homepage.html#blog").blog-back
             +icon('ico-down-arrow')
             span Назад
             
@@ -152,10 +152,10 @@ block content
                 .blog-card__more
                   +icon('ico-btn-next')
                   
-        .blog-nav.blog-nav--prev
+        .blog-nav.blog-nav--prev.blog-nav--top
           .blog-card__more.blog-card__more--reverse(js-slick-prev-s)
             +icon('ico-btn-next')
-        .blog-nav
+        .blog-nav.blog-nav--top
           .blog-card__more(js-slick-next-s)
             +icon('ico-btn-next')
   //////////
@@ -165,8 +165,7 @@ block content
     .controls.is-visible.is-blog
       .controls__wrapper
         a(href='http://laboratoriacoffee.us16.list-manage.com/subscribe?u=f29206a1c7809b3868ef237d8&id=6f2be7d048' target="_blank").controls__mail-link 
-          span.lg Подписаться на рассылку
-          span.xs Рассылка
+          span Подписаться на рассылку
         .controls__socials
           .controls__socials-head Поделиться статьей:
           .controls__socials-list

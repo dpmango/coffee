@@ -37,7 +37,6 @@
         width: 280px
         box-shadow: 0 5px 15px 0 rgba(0,0,0,0.14)
 
-
     &[data-slick-section="1"]
       + .blog-nav--prev
         opacity: 0
@@ -78,6 +77,16 @@
   &--prev
     right: auto
     left: 50px
+  &--top
+    top: 83px
+    right: auto
+    left: 230px
+    &.blog-nav--prev
+      left: 190px
+
+    .blog-card__more
+      box-shadow: none !important
+
   .blog-card__more
     background: #FFFFFF
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.50)
@@ -93,6 +102,10 @@
     right: 30px
     &--prev
       right: auto
+    &--top
+      right: auto
+      left: 230px
+
   .blog-navigation
     width: 90px
 
@@ -309,6 +322,8 @@
   table
     td
       padding: 10px
+      &:first-child
+        min-width: 120px
       &:last-child
         padding-right: 0
 
@@ -413,6 +428,11 @@
       float: none !important
       max-width: 100%
 
+    table
+      td
+        padding: 0px
+        &:first-child
+          display: none
 
     blockquote
       margin: 35px 0
