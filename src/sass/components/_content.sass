@@ -130,6 +130,8 @@
       &.is-active
         transform: translate3d(-50%,-50%, 0)
         // opacity: 1
+    video
+      object-fit: cover
     &--m-right
       img:not(.content-image__wood)
         left: calc(50% - 10%)
@@ -335,7 +337,9 @@
   z-index: 5
   img
     margin-top: auto
-    margin-bottom: 60px
+    // margin-bottom: auto
+    height: auto
+    margin-bottom: 9vh
     margin-left: -35%
     max-width: 135%
   &.is-mobile
