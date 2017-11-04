@@ -113,7 +113,7 @@
     // перекрываем фейд текста со скроллом
     z-index: 5
     overflow: hidden
-    img:not(.content-image__wood)
+    img:not(.content-image__wood), video
       position: absolute
       z-index: 1
       top: 50%
@@ -511,7 +511,7 @@
     &-image
       flex: 0 0 auto
       height: auto
-      img:not(.content-image__wood)
+      img:not(.content-image__wood), video
         position: static
         transform: none
         min-width: auto

@@ -92,6 +92,12 @@ $(document).ready(function(){
           }, 1500)
         }
 
+        // autoplay video
+        if ( nextIndex == 3 ){
+          var video = $('[js-play-video]');
+          video.get(0).play();
+        }
+
         // custom navigation
         $('.section').each(function(i, section){
           var sectionIndex = i + 1

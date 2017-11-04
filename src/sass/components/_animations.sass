@@ -44,7 +44,7 @@
   .content-image
     transform: translate3d(100%,0px,0)
     transition: tranasform .5s .6s ease
-    img:not(.content-image__wood)
+    img:not(.content-image__wood), video
       transform: translate3d(-25%,-50%,0)
       transition: all .5s .75s ease-in-out
   .content-slider
@@ -96,7 +96,7 @@
       opacity: 1
       transform: translate3d(0,0,0)
     .content-image
-      img:not(.content-image__wood)
+      img:not(.content-image__wood), video
         transform: translate3d(-50%,-50%,0)
         &[data-for]
           transform: translate3d(50%,-50%,0)
