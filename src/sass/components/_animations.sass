@@ -47,6 +47,8 @@
     img:not(.content-image__wood), video
       transform: translate3d(-25%,-50%,0)
       transition: all .5s .75s ease-in-out
+    video
+      transform: translate3d(-75%,-50%,0)
   .content-slider
     img
       transform: translate3d(50%,-50%,0)
@@ -102,6 +104,9 @@
           transform: translate3d(50%,-50%,0)
           &.is-active
             transform: translate3d(-50%,-50%, 0)
+      video
+        transform: translate3d(-100%,-50%,0)
+
     .content-slider img
       transform: translate3d(-50%,-50%,0)
       // transition: opacity $transitionSpeed $ease
