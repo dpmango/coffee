@@ -87,14 +87,6 @@
 
 @media only screen and (min-width: 1200px) and (min-height: 800px)
   .header
-    &__logo
-      transform: scale(1.5)
-      transform-origin: center 40%
-      transition: all .25s ease
-    &.is-half
-      .header__logo
-        transform: scale(1.3)
-        transform-origin: center 30%
     &--blog
       height: 320px
       .header
@@ -119,6 +111,12 @@
             margin-right: 10px
 
 
+@media only screen and (min-width: 1200px) and (min-height: 800px)
+  .header:not(.header--blog):not(.header--centered):not(.is-half)
+    .header__logo
+      transform: scale(1.5)
+      transform-origin: center 40%
+      transition: all .25s ease
 
 
 +rmin($wide)
@@ -194,7 +192,7 @@
     &--centered
       .header__logo
         padding-left: 0
-        
+
     &__menu
       display: none
     &__socials
