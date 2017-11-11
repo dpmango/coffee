@@ -127,21 +127,8 @@
       margin-top: 12px
       font-size: 14px
       font-family: 'Roboto Slab', sans-serif
-  // &__mailer
-  //   position: absolute
-  //   top: 0
-  //   bottom: 0
-  //   z-index: 5
-  //   width: 50%
-  //   text-align: center
-  //   display: flex
-  //   justify-content: center
-  //   align-items: center
-  //   cursor: pointer
-  //   opacity: 0
-  //   pointer-events: none
-  //   transform: translate3d(0,-30px,0)
-  //   transition: all $transitionSpeed $ease
+  &__mailer
+
   &.is-visible
     opacity: 1
     pointer-events: all
@@ -197,7 +184,31 @@
       opacity: 1
       pointer-events: all
       transform: translate3d(0,0,0)
-
+    .controls
+      &__mailer
+        font-size: 16px
+        &--contact
+          font-size: 0
+  &:not(.is-last)
+    .controls
+      &__mailer
+        font-size: 0
+        &--contact
+          font-size: 16px
+          opacity: 1
+          pointer-events: all
+          transform: translate3d(0,0,0)
+  &.is-contacts
+    .controls__progress
+      width: 630px
+      left: auto
+      transform: translate3d(0,0,0)
+    .controls__mailer
+      font-size: 14px
+      margin-right: 100px !important
+      opacity: 1
+      pointer-events: all
+      transform: translate3d(0,0,0)
 
 +rh(800)
   .controls
@@ -235,10 +246,12 @@
     &__progress
       transform: translate3d(10%,0,0) !important
 
-    &.is-blog
+    &.is-blog, &.is-contacts
       .controls
         &__progress
           transform: none !important
+
+
 
 +r($mobile)
   .controls
@@ -260,6 +273,7 @@
             a
               margin-right: 5px
         &__mail-link
+          font-size: 14px
           max-width: 100px
           margin-left: 40px
           margin-right: 40px !important
@@ -269,6 +283,18 @@
             &::after
               display: none
 
+    &.is-contacts
+      .controls__progress
+        width: 100%
+        left: 0
+      .controls__mailer
+        margin-left: -10px
+        margin-right: 40px !important
+        span
+          text-decoration: underline
+          line-height: 1.35
+          &::after
+            display: none
 
 #mouse
   .mouse

@@ -1,0 +1,38 @@
+// HEADER :: START
+header.header.header--blog.header--centered
+  .header__wrapper
+    .header__hamburger
+      .hamburger.hamburger--collapse(js-toggle-mobile-menu)
+        span.hamburger-box
+          span.hamburger-inner
+
+    .header__logo(js-first-section)
+      +icon('ico-logo')
+
+    ul.header__menu(js-header-navigation js-teleport data-teleport-to="mobile-menu" data-teleport-condition='<768')
+      li
+        a(href="homepage.html#about") О компании
+      li
+        a(href="homepage.html#roasting") Обжарка кофе
+      li
+        a(href="homepage.html#service") Сервис
+      li
+        a(href="homepage.html#products") Продукция 
+      li
+        a(href="blog-page.html#blog") Блог
+      li
+        a(href="homepage.html#contacts") Контакты
+
+        
+
+.mobile-menu
+  .mobile-menu__wrapper
+    ul.mobile-menu__menu(js-header-navigation data-teleport-target="mobile-menu")
+
+    .header__socials
+      a(href='#' target="_blank")
+        +icon('ico-social-facebook')
+      a(href='#' target="_blank")
+        +icon('ico-social-instagram')
+      a(href='#' target="_blank")
+        +icon('ico-social-telegram')

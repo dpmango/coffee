@@ -120,7 +120,7 @@ $(document).ready(function(){
           })
         } else {
           $('.controls__progress').css({
-            'transform': 'translate3d(80%,0,0)'
+            'transform': 'translate3d(60%,0,0)'
           })
         }
 
@@ -437,9 +437,18 @@ $(document).ready(function(){
   });
 
   $('[js-offer-reset]').on('click', function(){
-    $(this).closest('.get-offer').removeClass('is-form').removeClass('is-ok');
 
-    $(this).closest('.get-offer').find('input').val('')
+    var container;
+    if ( $(this).closest('.get-offer').length > 0 ){
+      container = $(this).closest('.get-offer')
+    } else {
+      container = $(this).closest('.zakaz-form')
+    }
+
+    container.removeClass('is-form').removeClass('is-ok');
+
+    container.find('input').val('')
+
   });
 
   //////////////

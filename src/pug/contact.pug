@@ -1,0 +1,55 @@
+---
+title: Labaratoria coffee
+bodyClass: contactpage
+---
+extends shared/_layout
+block header
+  include components/_header-contact
+
+block content
+    
+  //////////
+  // ZAKAZ
+  //////////
+  
+  .zakaz
+    .zakaz__wrapper
+      .content__title.content__title--static Оформление заказа
+      .zakaz__text
+        p Интернет-магазин "Лаборатории кофе" – в разработке. <br> Сейчас вы можете приобрести кофе нашей обжарки, <br> сделав заказ у менеджеров. 
+
+        p 
+          b Телефон: <a href="tel:+7 (495) 585-56-83">+7 (495) 585-56-83</a>; <br>
+          b e-mail: <a href="mailto:zakaz@laboratoriacoffee"> zakaz@laboratoriacoffee.ru </a>
+
+        .zakaz-form
+          form.get-offer__form(js-validate-zakaz)
+            .get-offer__form-row
+              .get-offer__form-input
+                label Перезвоните мне!
+                input(type='tel' name="phone" placeholder="Номер телефона")
+                  
+              button(type='submit')
+                +icon('ico-btn-next')
+          .get-offer__sucess
+            a(href="#").btn.btn-outline.btn-outline--black(js-offer-reset) Отправить повторно
+            .get-offer__sucess-message Спасибо! Ваша заявка получена
+                                                
+
+    //////////
+    // CONTROLS
+    //////////
+    .controls.is-visible.is-contacts
+      .controls__wrapper
+
+        .controls__socials
+          a(href='http://laboratoriacoffee.us16.list-manage.com/subscribe?u=f29206a1c7809b3868ef237d8&id=6f2be7d048' target="_blank").controls__mailer.controls__mail-link 
+            span Подписаться на рассылку
+          a(href='#' target="_blank")
+            +icon('ico-social-facebook')
+          a(href='#' target="_blank")
+            +icon('ico-social-instagram')
+          a(href='#' target="_blank")
+            +icon('ico-social-telegram')
+        .controls__progress
+        

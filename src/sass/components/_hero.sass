@@ -59,7 +59,7 @@
 
   &__description
     font-size: 24px
-    margin-top: 5px
+    margin-top: 15px
     letter-spacing: -0.17px
     text-shadow: 0 0 10px #000000
     line-height: 1.4
@@ -70,13 +70,21 @@
   &__mouse
     position: absolute
     bottom: 25px
-    left: 50%
+    left: 60%
     z-index: 5
     cursor: pointer
-    transform: translateX(-50%)
     svg
       max-height: 68px
       transform-origin: bottom center
+  &__spot
+    +rmin($desktop)
+      width: 360px
+      height: 120px
+      background: #0F0F0F
+      position: absolute
+      bottom: 0
+      left: 0
+      z-index: 4
 
   &__socials
     display: none
@@ -116,6 +124,9 @@
         margin-left: 200px
     &__socials
       display: block
+    &__mouse
+      left: 50%
+      transform: translateX(-50%)
 
 +r($tablet)
   .hero

@@ -3,5 +3,7 @@ ProjectTitle: Lab-coffee
 PageList:
 - file: homepage.html
   ready: 100
+- file: contact.html
+  ready: 100
 - file: blog-page.html
   ready: 100
