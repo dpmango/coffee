@@ -130,36 +130,36 @@ $(document).ready(function(){
     submitHandler: function(form) {
       $(form).addClass('is-loading');
 
-      setTimeout(function(){
-        // remove is-ok class for error in prodcution
-        $(form).removeClass('is-loading');
-        $(form).parent().addClass('is-ok');
-        // remove is-ok class for error in prodcution
-      }, 350);
+      // setTimeout(function(){
+      //   // remove is-ok class for error in prodcution
+      //   $(form).removeClass('is-loading');
+      //   $(form).parent().addClass('is-ok');
+      //   // remove is-ok class for error in prodcution
+      // }, 350);
 
       // // ajax posting for production
-      // $.ajax({
-      //   type: "POST",
-      //   url: '/php/zakaz.php',
-      //   data: $(form).serialize(),
-      //   success: function(response) {
-      //     $(form).removeClass('is-loading');
-      //     var data = $.parseJSON(response);
-      //     console.log(data)
-      //     if (data.success) {
-      //       // do something I can't test
-      //       $(form).removeClass('is-loading');
-      //       $(form).parent().addClass('is-ok');
-      //     } else {
-      //       // $(form).find('[data-error]').html(data.message).show();
-      //     }
-      //   }
-      // });
+      $.ajax({
+        type: "POST",
+        url: '/php/zakaz.php',
+        data: $(form).serialize(),
+        success: function(response) {
+          $(form).removeClass('is-loading');
+          var data = $.parseJSON(response);
+          console.log(data)
+          if (data.success) {
+            // do something I can't test
+            $(form).removeClass('is-loading');
+            $(form).parent().addClass('is-ok');
+          } else {
+            // $(form).find('[data-error]').html(data.message).show();
+          }
+        }
+      });
     },
     rules: {
       phone: {
         required: true,
-        normalizer: function(value) {  
+        normalizer: function(value) {
           return value.replace(/[^\d]/g, '');
         },
         minlength: 10,
