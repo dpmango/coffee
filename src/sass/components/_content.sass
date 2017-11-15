@@ -344,12 +344,15 @@
   position: relative
   z-index: 5
   img
+    flex: 0 0 auto
     margin-top: auto
     // margin-bottom: auto
-    height: auto
+    height: 100%
     margin-bottom: 9vh
     margin-left: -35%
-    max-width: 135%
+    width: 135%
+    +rh(768)
+      margin-bottom: 2vh
   &.is-mobile
     display: none
 
@@ -357,8 +360,9 @@
   .product-image
     display: none
     img
+      height: auto
       margin-left: -25px
-      max-width: calc(100% + 40px)
+      width: calc(100% + 40px)
       margin-top: 30px
       margin-bottom: 20px
     &.is-mobile

@@ -47,6 +47,10 @@
     img:not(.content-image__wood), video
       transform: translate3d(-25%,-50%,0)
       transition: all .5s .75s ease-in-out
+      @media (max-width: 1600px) and (max-height: 800px)
+        transform: translate3d(-25%,-50%,0) scale(.8)
+      @media (max-width: 1200px) and (max-height: 750px)
+        transform: translate3d(-25%,-50%,0) scale(.75)
     video
       transform: translate3d(-75%,-50%,0)
   .content-slider
@@ -100,16 +104,34 @@
     .content-image
       img:not(.content-image__wood), video
         transform: translate3d(-50%,-50%,0)
+        @media (max-width: 1600px) and (max-height: 800px)
+          transform: translate3d(-50%,-50%,0) scale(.8)
+        @media (max-width: 1200px) and (max-height: 750px)
+          transform: translate3d(-50%,-50%,0) scale(.75)
         &[data-for]
           transform: translate3d(50%,-50%,0)
+          @media (max-width: 1600px) and (max-height: 800px)
+            transform: translate3d(50%,-50%,0) scale(.8)
+          @media (max-width: 1200px) and (max-height: 750px)
+            transform: translate3d(50%,-50%,0) scale(.75)
           &.is-active
             transform: translate3d(-50%,-50%, 0)
+            @media (max-width: 1600px) and (max-height: 800px)
+              transform: translate3d(-50%,-50%,0) scale(.8)
+            @media (max-width: 1200px) and (max-height: 750px)
+              transform: translate3d(-50%,-50%,0) scale(.75)
+
       video
         transform: translate3d(-100%,-50%,0)
 
     .content-slider img
       transform: translate3d(-50%,-50%,0)
       // transition: opacity $transitionSpeed $ease
+      @media (max-width: 1600px) and (max-height: 800px)
+        transform: translate3d(-50%,-50%,0) scale(.8)
+      @media (max-width: 1200px) and (max-height: 750px)
+        transform: translate3d(-50%,-50%,0) scale(.75)
+
     .product-image
       opacity: 1
       transform: translate3d(0,0,0)

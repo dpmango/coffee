@@ -524,7 +524,7 @@ $(document).ready(function(){
         iwBackground.children(':nth-child(4)').css({'display' : 'none'});
 
         // set dialog pos
-        iwOuter.parent().parent().css({left: '-70px', top: '34px'});
+        iwOuter.parent().parent().css({left: '-70px', top: '38px'});
 
         // remove arrow
         iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 10000px !important;'});
